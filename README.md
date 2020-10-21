@@ -1,1 +1,1 @@
-# team22
+# Coffee Chat Web Application
