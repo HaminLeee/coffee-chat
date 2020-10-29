@@ -4,7 +4,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 import AdminHomePage from './pages/AdminHomePage';
 import UserHomePage from './pages/UserHomePage';
-import SideBar from './components/Sidebar';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -16,6 +16,8 @@ function App() {
                   render={() => <UserHomePage />}/>
             <Route exact path='/admin'
                   render={() => <AdminHomePage/>}/>
+            <Route exact path='/login'
+                  render={() => <LoginPage/>}/>
           </Switch>
         </BrowserRouter>
         {/*  <Chat style = {{width: '100rem'}}></Chat> */}

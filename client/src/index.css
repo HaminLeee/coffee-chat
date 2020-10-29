@@ -71,6 +71,10 @@ code {
   flex-wrap: wrap;
 }
 
+.userNameText {
+  margin-bottom: 8rem;
+}
+
 
 /* Sidebar Component */
 .sideBar {
@@ -95,6 +99,7 @@ code {
   font-weight: bold;
   margin-right: 0.3rem;
   margin-top:1.2rem;
+  cursor: pointer;
   color: white;
 }
 .sideBarMenuList {
@@ -108,6 +113,48 @@ code {
 /* Containers */
 .pageContainer {
   display: flex;
+}
+
+#homeHeader {
+  text-align:center;
+  margin-top: 2rem;
+}
+
+/* Button Component */
+.createOrgButton {
+  height: 2rem;
+  border-radius: 4px;
+  background-color: white;
+  border: none;
+  color: black;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 3rem;
+  margin-bottom: 10px;
+}
+
+/* Login Component */
+.login { 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	width:300px;
+	height:300px;
+}
+
+input { 
+	width: 100%; 
+	margin-bottom: 10px; 
+	background: white;
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: black;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
 
 }
 

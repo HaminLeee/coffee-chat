@@ -7,7 +7,10 @@ class UserHomePage extends Component {
           return (
                <div className="pageContainer">
                     <Sidebar></Sidebar>
-                    <UserCards></UserCards>
+                    <div id="homeHeader"> 
+                         <h1>People @UofT</h1>
+                         <UserCards></UserCards>
+                    </div>
                </div>
           );
      }
