@@ -21,7 +21,7 @@ class Navbar extends Component {
           })
           return (
                <div className="nav">
-                    <a>{ this.state.pageName }</a>
+                    <a href={ '/' }>{ this.state.pageName }</a>
                     { navbarItems }
                </div>
           );
