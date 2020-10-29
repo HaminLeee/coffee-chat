@@ -52,3 +52,39 @@ code {
   background-color: #196f76;
   color: white;
 }
+
+#navbar {
+  width: 100rem;
+}
+
+.userCard {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
+}
+
+.userContainer {
+  padding: 2px 16px; 
+}
+
+.userCards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sideBar {
+  height: 80%;
+  width: 10rem;
+  margin-top: 2rem;
+  margin-right: 3rem;
+  /* position: fixed; */
+  /* left: 2rem; */
+}
+
+.pageContainer {
+  display: flex;
+
+}
