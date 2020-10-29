@@ -3,15 +3,17 @@ import React, { Component } from 'react';
 class UserCards extends Component {
      state = {
           userNames: ['Hamin', 'Thuy', 'Umid', 'Mark', 'Matt', 'Gary'],
-          
+
      }
 
      render() {
           const userCards = this.state.userNames.map((user) => {
                return (
-                    <div className="userCard">
+                    <div className="organizationCard">
                          <div className="userContainer">
-                              <h4><b>{user}</b></h4>
+                              <h2 className="userNameText"><b>{user}</b></h2>
+                              
+                              <button className="exploreButton">Connect</button>
                          </div>
                     </div> 
                )
