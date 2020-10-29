@@ -1,0 +1,22 @@
+/* Chat component */
+
+@keyframes chatAnimation {
+    from {
+    }
+    to {
+        height: 200px;
+    }
+}
+
+/* The chat component that apply the animation */
+.chat {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 400px;
+    text-align: center;
+    animation-name: chatAnimation;
+    animation-duration: 0.5s;
+    background-color: #fcf876;
+}
+

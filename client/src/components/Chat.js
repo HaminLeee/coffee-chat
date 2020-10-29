@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { uid } from 'react-uid';
+import '../chat.css';
 
 class Chat extends Component {
     state = {
         pageName: 'Chat',
-        chatList: ['Contact', 'Message']
     }
     render() {
+        function handleClick(e) {
+            e.preventDefault();
+            // setChatAnimation(true);
+            // chatAnimation = {chatAnimation}
+        }
         return (
-            <div className ="Chat">
-                <a>{ "Chat" }</a>
+            <div className ="chat">
+                <a href="#" onClick={handleClick}>
+                    Chat
+                </a>
             </div>
         )
     }
