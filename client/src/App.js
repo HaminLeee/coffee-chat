@@ -5,6 +5,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import AdminHomePage from './pages/AdminHomePage';
 import UserHomePage from './pages/UserHomePage';
 import LoginPage from './pages/LoginPage';
+import ExplorePage from './pages/ExplorePage';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
                   render={() => <UserHomePage />}/>
             <Route exact path='/admin'
                   render={() => <AdminHomePage/>}/>
+            <Route exact path='/explore'
+                  render={() => <ExplorePage/>}/>
             <Route exact path='/login'
                   render={() => <LoginPage/>}/>
           </Switch>
