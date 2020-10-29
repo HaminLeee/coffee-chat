@@ -18,6 +18,7 @@ function App() {
                   render={() => <AdminHomePage/>}/>
           </Switch>
         </BrowserRouter>
+        {/*  <Chat style = {{width: '100rem'}}></Chat> */}
     </div>
   );
 }
