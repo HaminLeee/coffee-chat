@@ -29,7 +29,7 @@ class Chat extends Component {
         });
 
         const messageList = this.state.messages.map((message ) => {
-          return (<Message fromMe={true} content="Hi" />)
+          return (<Message fromMe={message.from == "Umid"} content={message.content} />)
         });
 
         return (

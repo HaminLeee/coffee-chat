@@ -8,6 +8,7 @@
     bottom: 0;
     margin-top: auto;
     margin-left: auto;
+    margin-right: 10px;
     height: 25px;
     width: 40rem;
     text-align: center;
@@ -56,33 +57,35 @@
 
 .messages {
     padding-left: 0;
+    padding-right: 5px;
     list-style-type: none;
-    width: 69%;
+    width: 67%;
     float: right;
 }
 
 .message {
     background-color: #333456;
     color: white;
-    width: 60%;
+    max-width: 80%;
     margin-bottom: 5px;
 }
 
 .messageContent {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 5px 5px 5px 5px;
 }
 
 .received {
-    border-top-right-radius: 20%;
-    border-bottom-right-radius: 20%;
+    border-top-right-radius: 15px 15px;
+    border-bottom-left-radius: 15px 15px;
+    border-bottom-right-radius: 15px 15px;
     text-align: left;
     margin-right: auto;
 }
 
 .sent {
-    border-top-left-radius: 20%;
-    border-bottom-left-radius: 20%;
+    border-top-left-radius: 15px 15px;
+    border-bottom-left-radius: 15px 15px;
+    border-bottom-right-radius: 15px 15px;
     text-align: right;
     margin-left: auto;
 }
