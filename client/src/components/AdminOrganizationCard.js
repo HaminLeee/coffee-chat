@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../organization.css';
 
-class OrganizationCard extends Component {
+class AdminOrganizationCard extends Component {
      state = {
-          organizations: ['Amazon', 'Intel', 'CSC309', 'KDMFKSD', 'SSDFPSDP'],
+          organizations: ['CSC369', 'CSSU', 'CSC309', 'Trinity College', 'Arts & Science', 'CSC108', 'CSC-TAs'],
 
      }
 
@@ -30,4 +30,4 @@ class OrganizationCard extends Component {
      }
 }
 
-export default OrganizationCard;
+export default AdminOrganizationCard;

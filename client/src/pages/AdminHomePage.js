@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
-import OrganizationCard from '../components/OrganizationCard';
+import AdminOrganizationCard from '../components/AdminOrganizationCard';
 
 class AdminHomePage extends Component {
      render() {
@@ -9,7 +9,7 @@ class AdminHomePage extends Component {
                     <Sidebar isAdmin="true"></Sidebar>
                     <div id="homeHeader"> 
                          <h1>Your Organizations</h1>
-                         <OrganizationCard></OrganizationCard>
+                         <AdminOrganizationCard></AdminOrganizationCard>
                     </div>
                </div>
           );

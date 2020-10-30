@@ -6,9 +6,9 @@ class ExplorePage extends Component {
      render() {
           return (
                <div className="pageContainer">
-                    <Sidebar isAdmin="true"></Sidebar>
+                    <Sidebar></Sidebar>
                     <div id="homeHeader"> 
-                         <h1>Your Organizations</h1>
+                         <h1>Explore Organizations</h1>
                          <OrganizationCard></OrganizationCard>
                     </div>
                </div>
