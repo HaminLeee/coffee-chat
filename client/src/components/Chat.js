@@ -20,7 +20,6 @@ class Chat extends Component {
         this.toggleClass = this.toggleClass.bind(this);
     }
     toggleClass() {
-        const newState = {pageName: this.state.packageName, active: !this.state.active};
         this.setState( {active: !this.state.active});
 
     };

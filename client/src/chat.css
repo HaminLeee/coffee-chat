@@ -9,12 +9,13 @@
     margin-top: auto;
     margin-left: auto;
     height: 25px;
-    width: 300px;
+    width: 40rem;
     text-align: center;
     animation-duration: 2.0s;
     animation: ease-in-out;
     background-color: #495464;
     color: #e8e8e8;
+    z-index: 200;
 }
 
 .header{
