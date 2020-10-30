@@ -1,22 +1,87 @@
 /* Chat component */
 
-@keyframes chatAnimation {
-    from {
-    }
-    to {
-        height: 200px;
-    }
-}
 
 /* The chat component that apply the animation */
 .chat {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    width: 400px;
+
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
+    margin-left: auto;
+    height: 25px;
+    width: 300px;
     text-align: center;
-    animation-name: chatAnimation;
-    animation-duration: 0.5s;
-    background-color: #fcf876;
+    animation-duration: 2.0s;
+    animation: ease-in-out;
+    background-color: #495464;
+    color: #e8e8e8;
 }
 
+.header{
+    border-bottom: #214252 solid thin;
+}
+
+.open {
+    height: 400px;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+}
+
+.hide {
+    display: none;
+}
+
+.contacts {
+    list-style-type: none;
+    width: 30%;
+    padding-left: 0;
+    float: left;
+    border-right: #060930 solid medium;
+    height: 375px;
+    margin-block-start: 0;
+}
+
+.contact {
+    text-align: left;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-bottom: #214252 solid thin;
+}
+
+.contact:hover {
+    /* background-color: #8bcdcd; */
+    border-left: #8bcdcd solid medium;
+}
+
+.messages {
+    padding-left: 0;
+    list-style-type: none;
+    width: 69%;
+    float: right;
+}
+
+.message {
+    background-color: #333456;
+    color: white;
+    width: 60%;
+    margin-bottom: 5px;
+}
+
+.messageContent {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.received {
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 20%;
+    text-align: left;
+    margin-right: auto;
+}
+
+.sent {
+    border-top-left-radius: 20%;
+    border-bottom-left-radius: 20%;
+    text-align: right;
+    margin-left: auto;
+}
