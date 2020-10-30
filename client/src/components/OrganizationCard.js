@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../organization.css';
 
 class OrganizationCard extends Component {
      state = {
-          organizations: ['Amazon', 'Intel', 'CSC309', 'KDMFKSD', 'SSDFPSDP'],
+          organizations: ['UofT', 'Amazon', 'Intel', 'CSC309', 'KDMFKSD', 'SSDFPSDP'],
 
      }
 
@@ -16,7 +17,9 @@ class OrganizationCard extends Component {
                                 <h2><b>{organization}</b></h2>
                             </div>
                             <div>
-                                <button className="exploreButton"> Explore </button>
+                                 <Link to={ '/uoft' }>
+                                        <button className="exploreButton"> Explore </button>
+                                 </Link>
                             </div>
                         </div>
                    </div>

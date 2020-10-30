@@ -161,6 +161,19 @@ code {
   margin-right: 0.6rem;
 }
 
+.addOrgButton {
+  width: 13rem;
+  height: 2rem;
+  border-radius: 4px;
+  background-color: #495464;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
 /* Chat component */
 
 .Chat {

@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import '../organization.css';
 
 class AdminOrganizationCard extends Component {
      state = {
-          organizations: ['CSC369', 'CSSU', 'CSC309', 'Trinity College', 'Arts & Science', 'CSC108', 'CSC-TAs'],
+          organizations: ['UofT', 'CSC369', 'CSSU', 'CSC309', 'Trinity College', 'Arts & Science', 'CSC108', 'CSC-TAs'],
 
+     }
+
+     addOrganization = () => {
+          this.state.organizations.push('Google');
+          let list = this.state.organizations;
+          this.setState({
+               organizations: list
+          })
      }
 
      render() {
@@ -15,17 +25,20 @@ class AdminOrganizationCard extends Component {
                             <div>
                                 <h2><b>{organization}</b></h2>
                             </div>
-                            <div>
-                                <button className="exploreButton"> Explore </button>
-                            </div>
+                            <Link to={ '/uoft' }>
+                                   <button className="exploreButton"> Explore </button>
+                            </Link>
                         </div>
                    </div>
                )
           })
           return (
-              <div className="organizationCards">
-                   {organizationCards}
-              </div>
+               <div>
+                    <button className="addOrgButton" onClick={this.addOrganization}> Add Organization </button>
+                    <div className="organizationCards">
+                         {organizationCards}
+                    </div>
+               </div>
           );
      }
 }

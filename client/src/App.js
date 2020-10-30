@@ -21,6 +21,8 @@ function App() {
                   render={() => <ExplorePage/>}/>
             <Route exact path='/login'
                   render={() => <LoginPage/>}/>
+            <Route exact path='/uoft'
+                  render={() => <UserHomePage/>}/>
           </Switch>
         </BrowserRouter>
         {/*  <Chat style = {{width: '100rem'}}></Chat> */}
