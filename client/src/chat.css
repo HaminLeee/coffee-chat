@@ -68,6 +68,26 @@
     height: 375px;
 }
 
+.messages::-webkit-scrollbar {
+    width: 20px;
+}
+
+.messages::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+
+.messages::-webkit-scrollbar-thumb {
+    background: #333456;
+    border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+    background: #333456;
+}
+
+
 .message {
     background-color: #333456;
     color: white;
