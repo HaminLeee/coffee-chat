@@ -12,7 +12,7 @@ class Message extends Component {
 
         if (this.props.fromMe) {
             return (
-                <li className="message sent">
+                <li className="message sent" >
                     <div className="messageContent">
                         {this.props.content}
                     </div>
@@ -21,7 +21,7 @@ class Message extends Component {
         }
         else {
             return (
-                <li className="message received">
+                <li className="message received" >
                     <div className="messageContent">
                         {this.props.content}
                     </div>

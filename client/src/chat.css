@@ -10,7 +10,7 @@
     margin-left: auto;
     margin-right: 10px;
     height: 25px;
-    width: 40rem;
+    width: 60rem;
     text-align: center;
     animation-duration: 2.0s;
     animation: ease-in-out;
@@ -56,10 +56,9 @@
 }
 
 .messages {
-    padding-left: 0;
+    padding-left: 5px;
     padding-right: 5px;
     list-style-type: none;
-    width: 67%;
     float: right;
 }
 
@@ -88,4 +87,25 @@
     border-bottom-right-radius: 15px 15px;
     text-align: right;
     margin-left: auto;
+}
+
+.messageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 375px;
+    width: 67%;
+
+}
+
+.messageForm {
+    display: inline-flex;
+
+}
+
+.messageInput {
+}
+
+.submitButton {
+
 }
