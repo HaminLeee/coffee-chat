@@ -64,6 +64,8 @@
     padding-right: 5px;
     list-style-type: none;
     float: right;
+    overflow-y: scroll;
+    height: 375px;
 }
 
 .message {
