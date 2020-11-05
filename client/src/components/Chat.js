@@ -73,8 +73,8 @@ class Chat extends Component {
                         </ul>
                         <form className="messageForm" onSubmit={this.onSend}>
                             <input type="text" name="message" placeholder="Type something..." required="required"
-                                   value={this.state.inputValue} onChange={this.onUpdate}/>
-                            <button type="submit" >send</button>
+                                   value={this.state.inputValue} onChange={this.onUpdate} className="messageInput"/>
+                            <button type="submit" className="submitButton" >send</button>
                         </form>
                     </div>
                 </div>
