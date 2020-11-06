@@ -174,6 +174,19 @@ code {
   margin-bottom: 10px;
 }
 
+.delOrgButton {
+  width: 4rem;
+  height: 2rem;
+  border-radius: 4px;
+  background-color: #d85050;
+  border: black;
+  color: white;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
 /* Chat component */
 
 .Chat {
