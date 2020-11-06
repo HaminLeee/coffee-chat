@@ -2,10 +2,11 @@ import React from 'react';
 import Navbar from "./components/Navbar";
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
-import AdminHomePage from './pages/AdminHomePage';
 import UserHomePage from './pages/UserHomePage';
 import LoginPage from './pages/LoginPage';
 import ExplorePage from './pages/ExplorePage';
+import AdminOrganizationHomePage from './pages/AdminOrganizationHomePage';
+import AdminUserHomePage from './pages/AdminUserHomePage';
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
             <Route exact path='/'
                   render={() => <UserHomePage />}/>
             <Route exact path='/admin'
-                  render={() => <AdminHomePage/>}/>
+                  render={() => <AdminOrganizationHomePage/>}/>
+            <Route exact path='/admin/user'
+                  render={() => <AdminUserHomePage/>}/>
             <Route exact path='/explore'
                   render={() => <ExplorePage/>}/>
             <Route exact path='/login'

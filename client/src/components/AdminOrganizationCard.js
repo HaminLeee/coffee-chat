@@ -18,9 +18,7 @@ class AdminOrganizationCard extends Component {
      }
 
      deleteOrganization = (organization) => {
-          console.log(organization);
           let updated = this.state.organizations.filter((org) => org !== organization);
-          console.log(updated);
 
           this.setState({
                organizations: updated
@@ -36,7 +34,7 @@ class AdminOrganizationCard extends Component {
                                 <h2><b>{organization}</b></h2>
                             </div>
                             <div>
-                                   <Link to={ '/uoft' }>
+                                   <Link to={ '/admin/user' }>
                                              <button className="exploreButton"> Explore </button>
                                    </Link>
                                    <br></br>

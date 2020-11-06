@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
 import AdminOrganizationCard from '../components/AdminOrganizationCard';
 
-class AdminHomePage extends Component {
+class AdminOrganizationHomePage extends Component {
      render() {
           return (
                <div className="pageContainer">
@@ -16,4 +16,4 @@ class AdminHomePage extends Component {
      }
 }
 
-export default AdminHomePage;
+export default AdminOrganizationHomePage;
