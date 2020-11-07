@@ -41,9 +41,7 @@ class LoginPage extends Component {
                return <Redirect to="/user"/>
           }
           else {
-               this.setState({
-                    error: 1,
-               })
+               alert('Incorrect Password or Username!')
           }
      }
 
@@ -63,9 +61,8 @@ class LoginPage extends Component {
                     )
                } else {
                     return (
-                         <Link to={ '/login' }>
-                              <button type="submit" className="exploreButton">Log in.</button>
-                         </Link> 
+                         <button type="submit" className="exploreButton">Log in.</button>
+                     
                     )
                }
           }
@@ -78,6 +75,8 @@ class LoginPage extends Component {
                          <input type="password" value={this.state.value} onChange={this.handlePassWordInputChange} name="passWord" placeholder="Password" required="required" />
 
                          {btn()}
+                         { this.state.error === 1 &&
+                              <h3>Invalid Username or Password</h3>}
 
                      
                     </form>
