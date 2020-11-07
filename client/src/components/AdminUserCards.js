@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 class AdminUserCards extends Component {
      state = {
           userNames: ['Hamin', 'Thuy', 'Umid', 'Mark', 'Matt', 'Gary', 'Benjamin', 'Robert', 'Berk', 'Ethan', 'More other users ...'],
+          newUserName: ''
 
      }
 
      addUser = () => {
-          this.state.userNames.push('New User');
+          this.state.userNames.push(this.state.newUserName);
           let list = this.state.userNames;
           this.setState({
                userNames: list,
@@ -19,6 +20,13 @@ class AdminUserCards extends Component {
           this.setState({
                userNames: updated,
           })
+     }
+
+     handleInputChange = e => {
+          this.setState({ 
+               newUserName: e.target.value,
+          })
+
      }
 
      render() {
@@ -39,8 +47,14 @@ class AdminUserCards extends Component {
           return (
                <div>
                     <div>
-                         <button className="addOrgButton" onClick={this.addUser}> Add User </button>
+                         <form>
+                              <label>
+                                   <h4>New User Name</h4>
+                                   <input onChange={this.handleInputChange} type="text" name="name" />
+                              </label>
+                         </form>
                          <br></br>
+                         <button className="addOrgButton" onClick={this.addUser}> Add User </button>
                     </div>
                     <div className="userCards">
                          {userCards}
