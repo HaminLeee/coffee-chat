@@ -14,7 +14,7 @@ function App() {
       <Navbar id="navbar"></Navbar>
       <BrowserRouter>
           <Switch>
-            <Route exact path='/'
+            <Route exact path='/user'
                   render={() => <UserHomePage />}/>
             <Route exact path='/admin'
                   render={() => <AdminOrganizationHomePage/>}/>
