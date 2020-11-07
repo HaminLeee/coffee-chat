@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class UserCards extends Component {
+class AdminUserCards extends Component {
      state = {
           userNames: ['Hamin', 'Thuy', 'Umid', 'Mark', 'Matt', 'Gary', 'Benjamin', 'Robert', 'Berk', 'Ethan', 'More other users ...'],
 
@@ -50,4 +50,4 @@ class UserCards extends Component {
      }
 }
 
-export default UserCards;
+export default AdminUserCards;

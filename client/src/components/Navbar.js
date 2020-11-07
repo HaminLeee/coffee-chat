@@ -15,7 +15,7 @@ class Navbar extends Component {
                     )
                } else {
                     return (
-                         <a href={ nav.toLowerCase() } key={ uid(nav) }>{ nav }</a>
+                         <a href={ '/' + nav.toLowerCase() } key={ uid(nav) }>{ nav }</a>
                     )
                }
           })
