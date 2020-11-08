@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { uid } from 'react-uid';
 
 class Sidebar extends Component {
      state = {
@@ -13,7 +14,7 @@ class Sidebar extends Component {
           const { isAdmin } = this.props; 
           const menus = this.state.menuList.map(menu => {
                return (
-                    <li className="sideBarMenu">{menu}</li>
+                    <li className="sideBarMenu" key={uid(menu)}>{menu}</li>
                )
           })
           if ( isAdmin === 'true' ) {

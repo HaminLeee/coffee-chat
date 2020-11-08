@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import ExplorePage from './pages/ExplorePage';
 import AdminOrganizationHomePage from './pages/AdminOrganizationHomePage';
 import AdminUserHomePage from './pages/AdminUserHomePage';
+import UserExplorerPage from './pages/UserExplorerPage';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
                   render={() => <LoginPage/>}/>
             <Route exact path='/uoft'
                   render={() => <UserHomePage/>}/>
+            <Route exact path='/user/explorer'
+                  render={() => <UserExplorerPage/>}/>
           </Switch>
         </BrowserRouter>
         {/*  <Chat style = {{width: '100rem'}}></Chat> */}
