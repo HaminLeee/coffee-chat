@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import '../userProfile.css'
+import '../assets/profile_picture.png'
 import Chat from './Chat';
 
 class UserExplorer extends Component {
     state = {
-        user: 'Hamin',
-        description: 'Fourth year student at UofT',
+        user: 'Thuy',
+        description: 'Third year student at UofT',
         chatOn: false
     }
 
@@ -18,11 +19,12 @@ class UserExplorer extends Component {
     render() {
         return (
             <div className="user">
-                <div className="userExplorerContainer">
+                <div className="userContainer">
                     <div>
-                        <h4><b>{this.state.user}</b></h4>
+                        <img src={require("../assets/profile_picture.png")} className="profilePicture" alt=""></img>
                     </div>
                     <div>
+                        <h4><b>{this.state.user}</b></h4>
                         <h4><b>{this.state.description}</b></h4>
                     </div>
                     <div>
