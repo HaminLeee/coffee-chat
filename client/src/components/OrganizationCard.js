@@ -4,7 +4,7 @@ import '../organization.css';
 
 class OrganizationCard extends Component {
      state = {
-          organizations: ['UofT', 'Amazon', 'Intel', 'CSC309', 'KDMFKSD', 'SSDFPSDP'],
+          organizations: ['UofT', 'Amazon', 'Intel', 'CSC309'],
 
      }
 

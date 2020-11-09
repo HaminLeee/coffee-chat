@@ -8,6 +8,7 @@ import ExplorePage from './pages/ExplorePage';
 import AdminOrganizationHomePage from './pages/AdminOrganizationHomePage';
 import AdminUserHomePage from './pages/AdminUserHomePage';
 import UserExplorerPage from './pages/UserExplorerPage';
+import SplashPage from './pages/SplashPage';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <Navbar id="navbar"></Navbar>
       <BrowserRouter>
           <Switch>
+            <Route exact path='/'
+                  render={() => <SplashPage/>} />
             <Route exact path='/user'
                   render={() => <UserHomePage />}/>
             <Route exact path='/admin'

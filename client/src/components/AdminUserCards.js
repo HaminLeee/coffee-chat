@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class AdminUserCards extends Component {
      state = {
-          userNames: ['Hamin', 'Thuy', 'Umid', 'Mark', 'Matt', 'Gary', 'Benjamin', 'Robert', 'Berk', 'Ethan', 'More other users ...'],
+          userNames: ['Hamin', 'Thuy', 'Umid', 'Mark', 'Matt', 'Gary', 'Robert' ],
           newUserName: ''
 
      }

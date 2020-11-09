@@ -8,7 +8,7 @@ class UserHomePage extends Component {
     }
     constructor(props) {
         super(props);
-        this.state.pageName = props.pageName;
+        this.state.pageName = this.props.pageName;
     }
      render() {
           return (
