@@ -80,7 +80,7 @@ code {
 
 /* Sidebar Component */
 .sideBar {
-  height: 40rem;
+  height: 45rem;
   width: 10rem;
   margin-top: 2rem;
   margin-right: 3rem;
@@ -98,7 +98,6 @@ code {
 }
 .sideBarMenu {
   margin-top:1rem;
-  font-weight: bold;
   margin-right: 0.3rem;
   margin-top:1.2rem;
   cursor: pointer;

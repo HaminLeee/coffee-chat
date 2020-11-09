@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { uid } from 'react-uid';
+import { Link } from 'react-router-dom';
 
 class Sidebar extends Component {
      state = {
-          menuList: ['Your Profile', 'Explore', 'Organization 1', 'Organization 2'] 
+          menuList: ['Your Profile', 'Explore', 'UofT', 'Amazon'] 
      }
 
      addOrganization = () => {
@@ -13,9 +14,63 @@ class Sidebar extends Component {
      render() {
           const { isAdmin } = this.props; 
           const menus = this.state.menuList.map(menu => {
-               return (
-                    <li className="sideBarMenu" key={uid(menu)}>{menu}</li>
-               )
+               if (menu === 'Your Profile') {
+                    if (isAdmin === 'true') {
+                         return (
+                              <Link to={'/admin'}>
+                                   <li className="sideBarMenu" key={uid(menu)}>
+                                        {menu}
+                                   </li>
+                              </Link>
+                         )
+                    } else {
+                         return (
+                              <Link to={'/user/explorer'}>
+                                  <li className="sideBarMenu" key={uid(menu)}>
+                                        {menu}
+                                   </li> 
+                              </Link>
+                         )
+
+                    }
+               } else if (menu === 'Explore') {
+                    if (isAdmin === 'true') {
+                         return (
+                              <Link to={'/admin'}>
+                                   <li className="sideBarMenu" key={uid(menu)}>
+                                        {menu}
+                                   </li>
+                              </Link>
+                         )
+                    } else {
+                         return  (
+                              <Link to={'/explore'}>
+                                   <li className="sideBarMenu" key={uid(menu)}>
+                                        {menu}
+                                   </li>
+                              </Link>
+                         )
+                    }
+               } else {
+                    if (isAdmin === 'true') {
+                         return (
+                              <Link to={'/admin/user'}>
+                                   <li className="sideBarMenu" key={uid(menu)}>
+                                        {menu}
+                                   </li> 
+                              </Link>
+                         )
+                    } else {
+                              return (
+                                   <Link to={'/' + menu}>
+                                        <li className="sideBarMenu" key={uid(menu)}>
+                                             {menu}
+                                        </li> 
+                                   </Link>
+                              )
+
+                    }
+               }
           })
           if ( isAdmin === 'true' ) {
                return (
