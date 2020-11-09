@@ -2,9 +2,15 @@
 
 # How to run
 
-`cd /client`
-`npm install`
-`npm run`
+```
+cd /client
+```
+```
+npm install
+```
+```
+npm run
+```
 
 # Purpose
 - The overall purpose of this app is to help connect members within an organization by creating a platform where they can schedule 1-on-1 meetups (coffee chats). In the current environment, it is not easy to reach out to individuals within the organization for advice and it will serve those individuals with equal or more opportunity to connect and chat with members within the organization. At a high level, a user will be able to create his/her profile, explore other users' profiles, chat with other users, and search for other users within the same organization. The main focus of this website is to help clients to have as many 1-on-1 meetings (coffee chats) as possible within the organization especially in this unprecedented time. 
