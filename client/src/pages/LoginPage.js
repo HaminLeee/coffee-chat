@@ -15,10 +15,7 @@ class LoginPage extends Component {
           this.handlePassWordInputChange = this.handlePassWordInputChange.bind(this);
           this.handleSubmit = this.handleSubmit.bind(this);
      }
-     // state = {
-     //      userName: '',
-     //      password: ''
-     // }
+     
      handleUserNameInputChange(e) {
           this.setState({
                userName: e.target.value
@@ -55,7 +52,7 @@ class LoginPage extends Component {
                     )
                } else if (this.state.userName === 'user' && this.state.password === 'user') {
                     return (
-                         <Link to={ '/user' }>
+                         <Link to={ '/explore' }>
                               <button type="submit" className="exploreButton">Log in.</button>
                          </Link>
                     )

@@ -10,6 +10,14 @@
     text-align: center;
 }
 
+.adminContainer {
+    padding: 2px 16px;
+    height: 15rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
 .userContainer {
     padding: 2px 16px;
     height: 30rem;

@@ -9,7 +9,7 @@ class UserExplorerPage extends Component {
                <div className="pageContainer">
                     <Sidebar></Sidebar>
                     <div id="homeHeader">
-                         <h1>Thuy's Profile</h1>
+                         <h1>User's Profile</h1>
                          <UserExplorer></UserExplorer>
                          
                     </div>

@@ -228,3 +228,9 @@ code {
 .connectButton:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+.splashContainer {
+  padding: 70px 0;
+  margin-top: 13rem;
+  text-align: center;
+}

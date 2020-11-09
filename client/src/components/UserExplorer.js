@@ -21,7 +21,7 @@ class UserExplorer extends Component {
             <div className="user">
                 <div className="userContainer">
                     <div>
-                        <img src={require("../assets/profile_picture.png")} className="profilePicture" alt=""></img>
+                        <img src={require("../assets/profile_picture2.png")} className="profilePicture" alt=""></img>
                     </div>
                     <div>
                         <h4><b>{this.state.user}</b></h4>
