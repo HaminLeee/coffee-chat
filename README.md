@@ -9,7 +9,7 @@ cd /client
 npm install
 ```
 ```
-npm run
+npm start
 ```
 
 # Purpose
