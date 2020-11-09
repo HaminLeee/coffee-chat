@@ -92,7 +92,7 @@ code {
 }
 .sideBar a {
   text-decoration: none;
-  font-size: 25px;
+  font-size: 1.2em;
   color: white;
   display: flex;
 }
