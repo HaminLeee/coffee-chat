@@ -33,7 +33,7 @@ class AdminUserCards extends Component {
           const userCards = this.state.userNames.map((user) => {
                return (
                     <div className="userCard">
-                         <div className="userContainer">
+                         <div className="adminContainer">
                               <h2 className="userNameText"><b>{user}</b></h2>
                               <div>
                                    <button className="exploreButton">Connect</button>
