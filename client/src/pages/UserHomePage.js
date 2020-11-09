@@ -3,12 +3,19 @@ import Sidebar from '../components/Sidebar';
 import UserCards from '../components/UserCards';
 
 class UserHomePage extends Component {
+    state = {
+        pageName: 'UofT',
+    }
+    constructor(props) {
+        super(props);
+        this.state.pageName = props.pageName;
+    }
      render() {
           return (
                <div className="pageContainer">
                     <Sidebar></Sidebar>
                     <div id="homeHeader"> 
-                         <h1>People @UofT</h1>
+                         <h1>People @{this.state.pageName}</h1>
                          <UserCards></UserCards>
                     </div>
                </div>

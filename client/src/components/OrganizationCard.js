@@ -17,7 +17,9 @@ class OrganizationCard extends Component {
                                 <h2><b>{organization}</b></h2>
                             </div>
                             <div>
-                                 <Link to={ '/uoft' }>
+                                {/*we only hard-code created the pages for Uoft right now
+                                Our others pages will be blank */}
+                                 <Link to={ '/' + organization }>
                                         <button className="exploreButton"> Explore </button>
                                  </Link>
                             </div>

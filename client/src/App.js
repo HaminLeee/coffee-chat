@@ -25,8 +25,14 @@ function App() {
                   render={() => <ExplorePage/>}/>
             <Route exact path='/login'
                   render={() => <LoginPage/>}/>
-            <Route exact path='/uoft'
-                  render={() => <UserHomePage/>}/>
+              <Route exact path='/uoft'
+                  render={() => <UserHomePage pageName="UofT"/>}/>
+              <Route exact path = '/amazon'
+                   render={() => <UserHomePage pageName="Amazon"/>}/>
+              <Route exact path='/intel'
+                     render={() => <UserHomePage pageName="Intel"/>}/>
+              <Route exact path='/csc309'
+                     render={() => <UserHomePage pageName="CSC309"/>}/>
             <Route exact path='/user/explorer'
                   render={() => <UserExplorerPage/>}/>
           </Switch>
