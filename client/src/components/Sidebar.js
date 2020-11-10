@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 class Sidebar extends Component {
      state = {
-          menuList: ['Your Profile', 'Explore', 'UofT', 'Amazon'] 
+          menuList: ['Your Profile', 'Explore', 'UofT']
      }
 
      addOrganization = () => {
           this.state.menuList.push('New Organization');
      }
-     
+
      render() {
-          const { isAdmin } = this.props; 
+          const { isAdmin } = this.props;
           const menus = this.state.menuList.map(menu => {
                if (menu === 'Your Profile') {
                     if (isAdmin === 'true') {
@@ -28,7 +28,7 @@ class Sidebar extends Component {
                               <Link to={'/user/explorer'}>
                                   <li className="sideBarMenu" key={uid(menu)}>
                                         {menu}
-                                   </li> 
+                                   </li>
                               </Link>
                          )
 
@@ -57,15 +57,15 @@ class Sidebar extends Component {
                               <Link to={'/admin/user'}>
                                    <li className="sideBarMenu" key={uid(menu)}>
                                         {menu}
-                                   </li> 
+                                   </li>
                               </Link>
                          )
                     } else {
                               return (
-                                   <Link to={'/' + menu}>
+                                   <Link to={'/organization/' + menu}>
                                         <li className="sideBarMenu" key={uid(menu)}>
                                              {menu}
-                                        </li> 
+                                        </li>
                                    </Link>
                               )
 

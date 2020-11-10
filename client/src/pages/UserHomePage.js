@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
 import UserCards from '../components/UserCards';
+import App from '../App.js';
 
 class UserHomePage extends Component {
     state = {
@@ -8,7 +9,7 @@ class UserHomePage extends Component {
     }
     constructor(props) {
         super(props);
-        this.state.pageName = this.props.pageName;
+        this.state.pageName = this.props.match.params.orgName;
     }
      render() {
           return (
