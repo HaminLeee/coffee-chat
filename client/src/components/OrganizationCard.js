@@ -19,7 +19,7 @@ class OrganizationCard extends Component {
                             <div>
                                 {/*we only hard-code created the pages for Uoft right now
                                 Our others pages will be blank */}
-                                 <Link to={ '/' + organization }>
+                                 <Link to={ '/organization/' + organization }>
                                         <button className="exploreButton"> Explore </button>
                                  </Link>
                             </div>
