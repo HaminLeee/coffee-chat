@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { uid } from 'react-uid';
+import { createBrowserHistory } from 'history';
 
 class Navbar extends Component {
      state = {
           pageName: 'Coffee Chat',
-          navbarList: ['Login', 'Home', 'Explore']
+          navbarList: ['Login', 'Home' ]
      }
 
+   
+
      render() {
+
           const navbarItems = this.state.navbarList.map((nav) => {
                if (nav === 'Home') {
                     return (

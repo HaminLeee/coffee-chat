@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class AdminUserCards extends Component {
      state = {
@@ -12,7 +13,7 @@ class AdminUserCards extends Component {
           let list = this.state.userNames;
           this.setState({
                userNames: list,
-          })
+          })   
      }
 
      deleteUser = (user) => {
@@ -36,7 +37,9 @@ class AdminUserCards extends Component {
                          <div className="adminContainer">
                               <h2 className="userNameText"><b>{user}</b></h2>
                               <div>
-                                   <button className="exploreButton">Connect</button>
+                                   <Link to={'/user/explorer'}>
+                                        <button className="exploreButton">View Profile</button>
+                                   </Link>
                                    <br></br>
                                    <button className="delOrgButton" onClick={() => this.deleteUser(user)}> Delete </button>
                               </div>

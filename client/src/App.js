@@ -12,7 +12,7 @@ import SplashPage from './pages/SplashPage';
 
 function App() {
   return (
-    <div >
+    <div id="app">
       <Navbar id="navbar"></Navbar>
       <BrowserRouter>
           <Switch>
