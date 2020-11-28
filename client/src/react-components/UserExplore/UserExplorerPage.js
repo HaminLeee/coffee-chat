@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Sidebar from '../components/Sidebar';
-import UserExplorer from '../components/UserExplorer';
+import Sidebar from '../Sidebar/Sidebar';
+import UserExplorer from './UserExplorer';
 
 class UserExplorerPage extends Component {
      

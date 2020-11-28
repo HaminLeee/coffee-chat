@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../userProfile.css'
+// import '../userProfile.css'
 import '../assets/profile_picture.png'
-import Chat from './Chat';
+import Chat from '../Chat/Chat';
 
 class UserExplorer extends Component {
     state = {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Sidebar from '../components/Sidebar';
-import OrganizationCard from '../components/OrganizationCard';
+import Sidebar from '../Sidebar/Sidebar';
+import OrganizationCard from '../UserCard/OrganizationCard';
 
 class ExplorePage extends Component {
      render() {

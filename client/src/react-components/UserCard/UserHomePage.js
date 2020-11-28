@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Sidebar from '../components/Sidebar';
-import UserCards from '../components/UserCards';
-import App from '../App.js';
+import Sidebar from '../Sidebar/Sidebar';
+import UserCards from './UserCards';
 
 class UserHomePage extends Component {
     state = {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Sidebar from '../components/Sidebar';
-import AdminOrganizationCard from '../components/AdminOrganizationCard';
+import Sidebar from '../Sidebar/Sidebar';
+import AdminOrganizationCard from './AdminOrganizationCard';
 
 class AdminOrganizationHomePage extends Component {
      render() {

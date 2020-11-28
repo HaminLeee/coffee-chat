@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Sidebar from '../components/Sidebar';
-import AdminUserCards from '../components/AdminUserCards';
+import Sidebar from '../Sidebar/Sidebar';
+import AdminUserCards from './AdminUserCards';
 
 class AdminUserHomePage extends Component {
      render() {

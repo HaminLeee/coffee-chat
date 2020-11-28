@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { uid } from 'react-uid';
-import '../chat.css';
+import './chat.css';
 import Message from "./Message";
 
 class Chat extends Component {

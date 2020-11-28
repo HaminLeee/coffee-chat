@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import '../organization.css';
+// import './organization.css';
 
 class AdminOrganizationCard extends Component {
      constructor(props) {

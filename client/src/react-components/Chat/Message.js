@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../chat.css";
+import "./chat.css";
 
 class Message extends Component {
 

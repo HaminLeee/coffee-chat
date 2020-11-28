@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../organization.css';
+import '../../styles/organization.css';
 
 class OrganizationCard extends Component {
      state = {

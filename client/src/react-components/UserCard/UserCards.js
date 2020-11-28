@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Chat from './Chat';
+import Chat from '../Chat/Chat';
 import { Link } from 'react-router-dom';
-import '../organization.css';
+// import '../organization.css';
 import { uid } from 'react-uid';
 
 class UserCards extends Component {
