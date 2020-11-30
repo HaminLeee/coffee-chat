@@ -6,3 +6,6 @@ mongodb_express_ajax/*
 
 react-express
 react-express/*
+
+node_modules
+node_modules/*

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { updateLoginForm, login } from "../../actions/user";
 const log = console.log;
 
 class LoginPage extends Component {
@@ -43,39 +44,17 @@ class LoginPage extends Component {
      }
 
      render() {
-          let btn = () => {
-               if (this.state.userName === 'admin' && this.state.password === 'admin') {
-                    return (
-                         <Link to={ '/admin' }>
-                              <button id="loginBtn1" type="submit" className="exploreButton">Log in.</button>
-                         </Link>
-                    )
-               } else if (this.state.userName === 'user' && this.state.password === 'user') {
-                    return (
-                         <Link to={ '/explore' }>
-                              <button type="submit" className="exploreButton">Log in.</button>
-                         </Link>
-                    )
-               } else {
-                    return (
-                         <button type="submit" className="exploreButton">Log in.</button>
-                     
-                    )
-               }
-          }
-          
+          const { app } = this.props
           return (
                <div className="login">
-                    <h1>Login</h1>
-                    <form onSubmit={this.handleSubmit}>
-                         <input type="text" value={this.state.value} onChange={this.handleUserNameInputChange} name="userName" placeholder="Username" required="required" />
-                         <input type="password" value={this.state.value} onChange={this.handlePassWordInputChange} name="passWord" placeholder="Password" required="required" />
+                   <form onSubmit={this.handleSubmit}>
+                         <input type="text" value={this.state.value} onChange={e => updateLoginForm(this, e.target)} name="userName" placeholder="Username" required="required" />
+                         <input type="password" value={this.state.value} onChange={e => updateLoginForm(this, e.target)} name="passWord" placeholder="Password" required="required" />
 
-                         {btn()}
+                         <button type="submit" className="exploreButton" onClick={() => login(this, app)}>Log in.</button> 
                          { this.state.error === 1 &&
-                              <h3>Invalid Username or Password</h3>}
-
-                     
+                              <h3>Invalid Username or Password</h3> }
+               
                     </form>
                </div> 
           );
