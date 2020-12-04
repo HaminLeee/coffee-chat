@@ -272,6 +272,21 @@ app.get('/api/messages', mongoChecker, authenticate, async (req, res) => {
     }
 
 })
+/**Finding messages between logged in user and given user*/
+app.get('/api/messages/:id', mongoChecker, authenticate, async (req, res) => {
+    const id = req.params.id;
+    // Get the messages
+    try {
+        const messages = await Message.find({$or: [{fromId: req.user._id, toId: id}, {toId: req.user._id, fromId: id}]})
+        // res.send(students) // just the array
+        res.send({ messages }) // can wrap students in object if want to add more properties
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+
+})
+
 /*** Webpage routes below **********************************/
 // Serve the build
 app.use(express.static(path.join(__dirname, "/client/build")));
