@@ -12,8 +12,9 @@ const { mongoose } = require("./db/mongoose");
 mongoose.set('useFindAndModify', false); // for some deprecation issues
 
 // import the mongoose models
-// const { Student } = require("./models/student");
 const { User } = require("./models/user");
+const { Person } = require("./models/person");
+const { Organization } = require("./models/organization");
 
 // to validate object IDs
 const { ObjectID } = require("mongodb");
@@ -148,13 +149,13 @@ app.post('/api/users', mongoChecker, async (req, res) => {
 
 /** Student resource routes **/
 // a POST route to *create* a student
-app.post('/api/students', mongoChecker, authenticate, async (req, res) => {
-    log(`Adding student ${req.body.name}, created by user ${req.user._id}`)
+app.post('/api/person', mongoChecker, authenticate, async (req, res) => {
+    log(`Adding person ${req.body.name}, created by user ${req.user._id}`)
 
     // Create a new student using the Student mongoose model
-    const student = new Student({
+    const person = new Person({
         name: req.body.name,
-        year: req.body.year,
+        occupation: req.body.occupation,
         creator: req.user._id // creator id from the authenticate middleware
     })
 
@@ -162,7 +163,7 @@ app.post('/api/students', mongoChecker, authenticate, async (req, res) => {
     // Save student to the database
     // async-await version:
     try {
-        const result = await student.save() 
+        const result = await person.save() 
         res.send(result)
     } catch(error) {
         log(error) // log server error to the console, not to the client.
@@ -175,13 +176,13 @@ app.post('/api/students', mongoChecker, authenticate, async (req, res) => {
 })
 
 // a GET route to get all students
-app.get('/api/students', mongoChecker, authenticate, async (req, res) => {
+app.get('/api/people', mongoChecker, authenticate, async (req, res) => {
 
     // Get the students
     try {
-        const students = await Student.find({creator: req.user._id})
+        const people = await Person.find({creator: req.user._id})
         // res.send(students) // just the array
-        res.send({ students }) // can wrap students in object if want to add more properties
+        res.send({ people }) // can wrap students in object if want to add more properties
     } catch(error) {
         log(error)
         res.status(500).send("Internal Server Error")
@@ -191,6 +192,46 @@ app.get('/api/students', mongoChecker, authenticate, async (req, res) => {
 
 // other student API routes can go here...
 // ...
+// a POST route to *create* a student
+app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
+    log(`Adding organization ${req.body.name}, created by user ${req.user._id}`)
+
+    // Create a new student using the Student mongoose model
+    const organization = new Organization({
+        name: req.body.name,
+        people: req.body.people,
+        creator: req.user._id // creator id from the authenticate middleware
+    })
+
+
+    // Save student to the database
+    // async-await version:
+    try {
+        const result = await organization.save() 
+        res.send(result)
+    } catch(error) {
+        log(error) // log server error to the console, not to the client.
+        if (isMongoError(error)) { // check for if mongo server suddenly dissconnected before this request.
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request') // 400 for bad request gets sent to client.
+        }
+    }
+})
+
+// a GET route to get all students
+app.get('/api/organizations', mongoChecker, authenticate, async (req, res) => {
+    // Get the students
+    try {
+        const people = await Organization.find({creator: req.user._id})
+        // res.send(students) // just the array
+        res.send({ people }) // can wrap students in object if want to add more properties
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+})
+
 
 /*** Webpage routes below **********************************/
 // Serve the build

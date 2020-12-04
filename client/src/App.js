@@ -19,16 +19,29 @@ class App extends React.Component {
       
       // global state passed down includes the current logged in user.
       state = {
-            currentUser: null
+            currentUser: null,
+            isAuthenticated: false
+      }
+      componentDidMount() {
+            if (this.state.currentUser) {
+                  this.setState({
+                        isAuthenticated: true
+                  })
+            }
       }
       
       render() {
-            const { currentUser } = this.state;
-            
-
+            const { currentUser, isAuthenticated } = this.state;
+            const NavbarComp = ({ currentUser }) => {
+                  if (!currentUser) {
+                        return <Navbar id="navbar" isAuthenticated={false}/>;
+                  } else {
+                        return <Navbar id="navbar" isAuthenticated={true}/>;
+                  }
+            };
             return (
             <div id="app">
-                  <Navbar id="navbar"></Navbar>
+                  <NavbarComp currentUser={currentUser}/>
                   <BrowserRouter>
                         <Switch>
                               <Route

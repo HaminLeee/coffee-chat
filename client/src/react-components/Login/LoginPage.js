@@ -32,17 +32,22 @@ class LoginPage extends React.Component {
                     <h2>Log in</h2>
 
                     <TextField
+                        required
                         name="email"
                         label="Email"
+                        pattern="/^\S+@\S+\.\S+$/"
+                        minLength={5}
                         className="login__input app__input app__horizontal-center"
                         margin="normal"
                         onChange={e => updateLoginForm(this, e.target)}
                     />
 
                     <TextField
+                        required
                         name="password"
                         label="Password"
                         type="password"
+                        minLength={5}
                         className="login__input app__input app__horizontal-center"
                         margin="normal"
                         onChange={e => updateLoginForm(this, e.target)}
