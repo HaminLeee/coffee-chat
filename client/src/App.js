@@ -23,28 +23,28 @@ class App extends React.Component {
       
       render() {
             const { currentUser } = this.state;
+            console.log({currentUser})
             return (
             <div id="app">
-                  
                   <Navbar id="navbar"></Navbar>
                   <BrowserRouter>
                         <Switch>
                               <Route
-                              exact path={["/", "/login", "/dashboard"] /* any of these URLs are accepted. */ }
+                              exact path={["/login", "/dashboard"] /* any of these URLs are accepted. */ }
                               render={ props => (
-                                    <div className="app">
+                                    <div>
                                           { /* Different componenets rendered depending on if someone is logged in. */}
-                                          {!currentUser ? <LoginPage {...props} app={this} /> : <ExplorePage {...props} app={this} />}
-                                    </div>                   // ... spread operator - provides all of the props in the props object
+                                          {!currentUser ? <LoginPage {...props} app={this} /> : <UserHomePage {...props} app={this} />}
+                                    </div>              
                                     
                               )}
                               />
+                              
       
-                              { /* Example of having a wildcard parameter in the url  */ } 
                               <Route exact path='/'
                                     render={() => <SplashPage/>} />
-                              <Route exact path='/user'
-                                    render={() => <UserHomePage />}/>
+                              <Route exact path='/explore'
+                                    render={() => <ExplorePage/>} />
                               <Route exact path='/admin'
                                     render={() => <AdminOrganizationHomePage/>}/>
                               <Route exact path='/admin/user'

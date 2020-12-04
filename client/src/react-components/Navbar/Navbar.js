@@ -7,11 +7,17 @@ class Navbar extends Component {
           pageName: 'Coffee Chat',
           navbarList: ['Login', 'Home' ]
      }
-
-   
-
+     
+     
+     
      render() {
-
+          const {isAdmin} = this.props;
+          if (isAdmin === 'true') {
+               let newList = ['Logout', 'Home'];
+               this.setState({
+                    navbarList: newList
+               })
+          }
           const navbarItems = this.state.navbarList.map((nav) => {
                if (nav === 'Home') {
                     return (

@@ -5,7 +5,7 @@
     "main": "server.js",
     "scripts": {
         "setup": "npm install && cd client && npm install && cd ..",
-        "build-run": "cd client && npm run build && cd .. && node server.js",
+        "build-run": "cd client && npm run build && cd .. && nodemon server.js",
         "start": "node server.js",
         "run-both": "concurrently \"nodemon server.js\" && \"cd client\" && \"npm start\" ",
         "heroku-postbuild": "cd client && npm install && npm run build",

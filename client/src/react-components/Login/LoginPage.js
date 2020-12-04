@@ -1,64 +1,63 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+
+// Importing actions/required methods
 import { updateLoginForm, login } from "../../actions/user";
-const log = console.log;
+import './index.css';
 
-class LoginPage extends Component {
-     constructor(props) {
-          super(props);
-          this.state = {
-               userName: '',
-               password: '',
-               error: 0,
-          };
-      
-          this.handleUserNameInputChange = this.handleUserNameInputChange.bind(this);
-          this.handlePassWordInputChange = this.handlePassWordInputChange.bind(this);
-          this.handleSubmit = this.handleSubmit.bind(this);
-     }
-     
-     handleUserNameInputChange(e) {
-          this.setState({
-               userName: e.target.value
-          });
-     }
+class LoginPage extends React.Component {
 
-     handlePassWordInputChange(e) {
-          this.setState({
-               password: e.target.value
-          });
-     }
+    constructor(props) {
+        super(props);
+        this.props.history.push("/login");
+    }
 
-     handleSubmit(e) {
-          e.preventDefault();
-          log(this.state.userName, this.state.password)
-          if (this.state.userName === 'admin' && this.state.password === 'admin') {
-               return <Redirect to="/admin"/>
-          }
-          else if (this.state.userName === 'user' && this.state.password === 'user') {
-               return <Redirect to="/user"/>
-          }
-          else {
-               alert('Incorrect Password or Username!')
-          }
-     }
+    // login form state
+    state = {
+        email: "",
+        password: ""
+    }
 
-     render() {
-          const { app } = this.props
-          return (
-               <div className="login">
-                   <form onSubmit={this.handleSubmit}>
-                         <input type="text" value={this.state.value} onChange={e => updateLoginForm(this, e.target)} name="userName" placeholder="Username" required="required" />
-                         <input type="password" value={this.state.value} onChange={e => updateLoginForm(this, e.target)} name="passWord" placeholder="Password" required="required" />
+    render() {
+        const { app } = this.props
 
-                         <button type="submit" className="exploreButton" onClick={() => login(this, app)}>Log in.</button> 
-                         { this.state.error === 1 &&
-                              <h3>Invalid Username or Password</h3> }
-               
-                    </form>
-               </div> 
-          );
-     }
+        return (
+            <div className="login__bg-image center">
+                <div className="login__card center"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center">
+                     
+                    <h2>Log in</h2>
+
+                    <TextField
+                        name="email"
+                        label="Email"
+                        className="login__input app__input app__horizontal-center"
+                        margin="normal"
+                        onChange={e => updateLoginForm(this, e.target)}
+                    />
+
+                    <TextField
+                        name="password"
+                        label="Password"
+                        type="password"
+                        className="login__input app__input app__horizontal-center"
+                        margin="normal"
+                        onChange={e => updateLoginForm(this, e.target)}
+                    />
+
+                    <Button
+                        className="login__button app__horizontal-center"
+                        onClick={() => login(this, app)}
+                    >
+                        Log In
+                    </Button>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default LoginPage;

@@ -9,3 +9,8 @@ react-express/*
 
 node_modules
 node_modules/*
+
+mongo-data
+
+client/build
+client/node_modules
