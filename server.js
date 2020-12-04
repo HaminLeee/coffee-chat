@@ -238,8 +238,8 @@ app.post('/api/messages', mongoChecker,  async (req, res) => {
 
     // Create a new message using the Message mongoose model
     const message = new Message({
-        "fromId": req.body.from,
-        "toId": req.body.to,
+        "fromId": req.body.fromId,
+        "toId": req.body.toId,
         "content": req.body.content
     })
 
