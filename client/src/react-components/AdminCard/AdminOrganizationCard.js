@@ -9,7 +9,8 @@ class AdminOrganizationCard extends Component {
 
           this.state = {
                organizations: ['UofT', 'CSC369', 'CSSU', 'CSC309', 'Trinity College', 'Arts & Science', 'CSC108', 'CSC-TAs'],
-               newOrganizationName: ""
+               newOrganizationName: "",
+               error: ""
           }
           this.addOrganization = this.addOrganization.bind(this);
           this.deleteOrganization = this.deleteOrganization.bind(this);
@@ -17,11 +18,18 @@ class AdminOrganizationCard extends Component {
      }
 
      addOrganization = () => {
-          this.state.organizations.push(this.state.newOrganizationName);
-          let list = this.state.organizations;
-          this.setState({
-               organizations: list,
-          })
+          if (this.state.newOrganizationName.length > 0) {
+               this.state.organizations.push(this.state.newOrganizationName);
+               let list = this.state.organizations;
+               this.setState({
+                    organizations: list,
+                    error: ""
+               })
+          } else {
+               this.setState({
+                    error: "Input at least one character"
+               })
+          }
      }
 
      deleteOrganization = (organization) => {
@@ -64,7 +72,8 @@ class AdminOrganizationCard extends Component {
                          <form>
                               <label>
                                    <h4>New Organization Name</h4>
-                                   <input onChange={this.handleInputChange} type="text" name="name" />
+                                   <input required pattern="[A-Z0-9a-z]{1-20}" onChange={this.handleInputChange} type="text" name="name" />
+                                   {this.state.error.length > 1 && <h5>{this.state.error}</h5>}
                               </label>
                          </form>
                          <br></br>
