@@ -9,6 +9,7 @@ import AdminOrganizationHomePage from './react-components/AdminCard/AdminOrganiz
 import AdminUserHomePage from './react-components/AdminCard/AdminUserHomePage';
 import UserExplorerPage from './react-components/UserExplore/UserExplorerPage';
 import SplashPage from './react-components/LandingPage/SplashPage';
+import Signup from './react-components/Signup';
 
 class App extends React.Component {
       constructor(props) {
@@ -23,7 +24,8 @@ class App extends React.Component {
       
       render() {
             const { currentUser } = this.state;
-            console.log({currentUser})
+            
+
             return (
             <div id="app">
                   <Navbar id="navbar"></Navbar>
@@ -43,6 +45,8 @@ class App extends React.Component {
       
                               <Route exact path='/'
                                     render={() => <SplashPage/>} />
+                              <Route exact path='/signup'
+                                    render={props => <Signup {...props}/>} />
                               <Route exact path='/explore'
                                     render={() => <ExplorePage/>} />
                               <Route exact path='/admin'

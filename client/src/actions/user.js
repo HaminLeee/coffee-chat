@@ -30,6 +30,27 @@ export const updateLoginForm = (loginComp, field) => {
     });
 };
 
+export const signup = (signUpComp, app) => {
+    const request = new Request("/api/users", {
+        method: "post",
+        body: JSON.stringify(signUpComp.state),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        } 
+    })
+     // Send the request with fetch()
+     fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                console.log('Successfully Added User')
+                return res.json();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
 // A function to send a POST request with the user to be logged in
 export const login = (loginComp, app) => {
     // Create our request constructor with all the parameters we need
