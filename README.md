@@ -1,6 +1,6 @@
 # Coffee Chat Web Application
 # Deployed website URL
-[Coffee Chat Website Link](https://dry-thicket-20964.herokuapp.com/)
+https://calm-brushlands-44336.herokuapp.com/
 
 # How to run
 ## Using NPM
