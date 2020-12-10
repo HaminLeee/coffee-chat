@@ -5,6 +5,21 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 
+const ContactSchema = mongoose.Schema({
+	creator: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+	},
+	uid: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+	},
+	name: {
+		type: String,
+		required: true,
+		minLength: 1
+	}
+})
 // Making a Mongoose model a little differently: a Mongoose Schema
 // Allows us to add additional functionality.
 const UserSchema = new mongoose.Schema({
@@ -23,7 +38,8 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		minlength: 6
-	}
+	},
+	contacts: [ContactSchema]
 })
 
 // An example of Mongoose middleware.
