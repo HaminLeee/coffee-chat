@@ -1,6 +1,6 @@
 # Coffee Chat Web Application
 # Deployed website URL
-https://calm-brushlands-44336.herokuapp.com/
+https://murmuring-plains-25485.herokuapp.com/
 
 # How to run
 ## Using NPM
