@@ -6,10 +6,6 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 
 const ContactSchema = mongoose.Schema({
-	creator: {
-		type: mongoose.Schema.Types.ObjectId,
-		required: true,
-	},
 	uid: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true,
