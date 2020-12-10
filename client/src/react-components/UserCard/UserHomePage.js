@@ -8,8 +8,6 @@ class UserHomePage extends Component {
     }
     constructor(props) {
         super(props);
-     //    this.state.pageName = this.props.match.params.orgName;
-     //    this.props.history.push("/dashboard");
     }
 
     state = {
@@ -17,7 +15,6 @@ class UserHomePage extends Component {
      }
 
      render() {
-          // const { history, app } = this.props;
           return (
                <div className="pageContainer">
                     <div id="homeHeader"> 

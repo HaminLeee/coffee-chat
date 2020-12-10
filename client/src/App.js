@@ -35,9 +35,9 @@ class App extends React.Component {
             const { currentUser, isAuthenticated } = this.state;
             const NavbarComp = ({ currentUser }) => {
                   if (!currentUser) {
-                        return <LoginNavbar id="navbar" />;
+                        return <LoginNavbar id="navbar" app={this}/>;
                   }
-                  return <Navbar id="navbar"/>;
+                  return <Navbar id="navbar" app={this}/>;
                   
             };
             return (

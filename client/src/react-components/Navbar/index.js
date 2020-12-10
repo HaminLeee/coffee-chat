@@ -16,73 +16,52 @@ import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import HomeIcon from '@material-ui/icons/Home';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 import './navbar.css';
+import {logout} from '../../actions/user';
+import {Link} from 'react-router-dom';
 
 class Navbar extends Component {
-     state = {
-          pageName: 'Coffee Chat',
-          navbarList: ['Login', 'Home', 'Sign Up' ]
-     }
-
-     componentDidMount() {
-          console.log(this.props)
-          if (this.props.isAuthenticated) {
-               let newList = ['Logout', 'Home'];
-               this.setState({
-                    navbarList: newList
-               })
-          }
-     }
-
-     render() {
-          // const navbarItems = this.state.navbarList.map((nav) => {
-          //      if (nav === 'Home') {
-          //           return (
-          //                <a href={ '/' } key={ uid(nav) }>{ nav }</a>
-          //           )
-          //      } 
-          //      return (
-          //           <a href={ '/' + nav.split(' ').join('') } key={ uid(nav) }>{ nav }</a>
-          //      )
-          // })
-          return (
-               <>
-               <CssBaseline />
-               <Drawer
-                 className="drawer"
-                 variant="permanent"
-                 anchor="left"
-               >
-                 <div className="toolbar" />
-                 <Divider />
-                 <List>
-                   {['Coffee Chat', 'Home'].map((text, index) => (
-                     <ListItem button key={text}>
-                       <ListItemIcon>
-                              {index % 2 === 0 ? <LocalCafeIcon/> : <HomeIcon />}
-                       </ListItemIcon>
-                       <ListItemText primary={text} />
-                     </ListItem>
-                   ))}
-                 </List>
-                 <Divider />
-                 <List>
-                   {['Organizations','Logout'].map((text, index) => (
-                     <ListItem button key={text}>
-                       <ListItemIcon>{index % 2 === 0 ? <AccountBalanceIcon /> : <ExitToAppIcon />}</ListItemIcon>
-                       <ListItemText primary={text} />
-                     </ListItem>
-                   ))}
-                 </List>
-               </Drawer>
-               <br></br>
-               <br></br>
-               </>
-               // <div className="nav">
-               //      <a href={ '/' }>{ this.state.pageName }</a>
-               //      { navbarItems }
-               // </div>
-          );
-     }
+      
+      render() {
+        const { app } = this.props;
+        return (
+              <>
+              <CssBaseline />
+              <Drawer
+                className="drawer"
+                variant="permanent"
+                anchor="left"
+              >
+              <div className="toolbar" />
+              <Divider />
+              <List>
+                {['Coffee Chat', 'Home'].map((text, index) => (
+                  // <Link to="/dashboard">
+                    <ListItem button key={text} component={Link} to={'/dashboard'}>
+                      <ListItemIcon>
+                            {index % 2 === 0 ? <LocalCafeIcon color="secondary"/> : <HomeIcon color="primary"/>}
+                      </ListItemIcon>
+                      <ListItemText primary={text} />
+                    </ListItem>
+                  // </Link>
+                ))}
+              </List>
+              <Divider />
+              <List>
+                {['Organizations','Logout'].map((text, index) => (
+                  <ListItem button key={text} component={Link} to={'/' + text}>
+                    <ListItemIcon onClick={() => logout(app)}>
+                      {index % 2 === 0 ? <AccountBalanceIcon color="primary" /> :<ExitToAppIcon onClick={() => logout(app)}/>}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                ))}
+              </List>
+            </Drawer>
+            <br></br>
+            <br></br>
+          </>
+        );
+    }
 }
 
 export default Navbar;
