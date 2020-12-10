@@ -37,5 +37,8 @@ yarn start
 
 - For the admin, after he/she has logged in, the admin will go to a page similar to the explore page for the regular user, with the exception that the admin can create new organizations, and he/she also has the options to delete existing organization (we assume that when we delete the organization, all of the user inside it will get removed from the organization, so we don't have to delete every user out of that organization before removing it). If the admin chooses to explore an organization, he/she will also be directed into a page with a list of user belongs to that organization, similar to that page for the regular user, with the exception that the admin can add or delete users from the organization (since we haven't set up the database yet, we don't check whether a user existed or not before adding that user into the organization).
 
-# Frameworks used
+# Technology used
 - React
+- Material UI
+- Express
+- Heroku
