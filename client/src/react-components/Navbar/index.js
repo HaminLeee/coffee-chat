@@ -34,16 +34,16 @@ class Navbar extends Component {
      }
 
      render() {
-          const navbarItems = this.state.navbarList.map((nav) => {
-               if (nav === 'Home') {
-                    return (
-                         <a href={ '/' } key={ uid(nav) }>{ nav }</a>
-                    )
-               } 
-               return (
-                    <a href={ '/' + nav.split(' ').join('') } key={ uid(nav) }>{ nav }</a>
-               )
-          })
+          // const navbarItems = this.state.navbarList.map((nav) => {
+          //      if (nav === 'Home') {
+          //           return (
+          //                <a href={ '/' } key={ uid(nav) }>{ nav }</a>
+          //           )
+          //      } 
+          //      return (
+          //           <a href={ '/' + nav.split(' ').join('') } key={ uid(nav) }>{ nav }</a>
+          //      )
+          // })
           return (
                <>
                <CssBaseline />
