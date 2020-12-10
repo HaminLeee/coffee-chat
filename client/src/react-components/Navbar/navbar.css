@@ -8,3 +8,7 @@
     /* min-width:calc(100% - 240px) ; */
     margin-left: 170px;
 }
+
+.navbarItems {
+    margin-left: auto;
+}

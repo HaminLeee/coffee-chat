@@ -26,8 +26,7 @@ class LoginPage extends React.Component {
             <div className="login__bg-image center">
                 <div className="login__card center"
                     display="flex"
-                    alignItems="center"
-                    justifyContent="center">
+                 >
                      
                     <h2>Log in</h2>
 

@@ -5,29 +5,32 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import {uid} from 'react-uid';
+import './navbar.css';
+import {Link} from 'react-router-dom';
 
 class LoginNavbar extends Component {
-    state = {
+   state = {
         pageName: 'Coffee Chat',
         navbarList: ['Login', 'Home', 'Sign Up' ]
    }
    
-
-
-    render() {
-        const navbarItems = this.state.navbarList.map((nav) => {
-            if (nav === 'Home') {
-                 return (
-                      <Button color="inherit" href={ '/' } key={ uid(nav) }>{ nav }</Button>
-                 )
-            } 
-            return (
-                 <Button color="inherit" href={ '/' + nav.split(' ').join('') } key={ uid(nav) }>{ nav }</Button>
-            )
-       })
+   
+   
+   render() {
+       const navbarItems = this.state.navbarList.map((nav) => {
+           console.log(nav);
+           if (nav === 'Home') {
+                return (
+                     <Button color="inherit" component={Link} to={ '/' } key={ uid(nav) }>{ nav }</Button>
+                )
+           } 
+           return (
+                <Button color="inherit" component={Link} to={ '/' + nav.split(' ').join('') } key={ uid(nav) }>{ nav }</Button>
+           )
+        })
         return (
             <>
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar variant="dense">
                     <IconButton edge="start" className="" color="inherit" aria-label="menu">
                     </IconButton>
@@ -35,8 +38,10 @@ class LoginNavbar extends Component {
                     <Typography variant="h6" color="inherit">
                         Coffee Chat 
                     </Typography>
+                    <div className="navbarItems">
+                        {navbarItems}
+                    </div>
                     
-                    {navbarItems}
                 </Toolbar>
             </AppBar>
                 
