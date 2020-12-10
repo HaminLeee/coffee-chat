@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Sidebar from '../Sidebar/Sidebar';
+import Sidebar from '../Sidebar';
 import OrganizationCard from '../UserCard/OrganizationCard';
 
 class ExplorePage extends Component {

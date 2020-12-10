@@ -1,14 +1,14 @@
 import React from 'react';
-import Navbar from "./react-components/Navbar/Navbar";
+import Navbar from "./react-components/Navbar";
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { checkSession } from "./actions/user";
 import UserHomePage from './react-components/UserCard/UserHomePage';
-import LoginPage from './react-components/Login/LoginPage';
+import LoginPage from './react-components/Login';
 import ExplorePage from './react-components/UserExplore/ExplorePage';
 import AdminOrganizationHomePage from './react-components/AdminCard/AdminOrganizationHomePage';
 import AdminUserHomePage from './react-components/AdminCard/AdminUserHomePage';
 import UserExplorerPage from './react-components/UserExplore/UserExplorerPage';
-import SplashPage from './react-components/LandingPage/SplashPage';
+import SplashPage from './react-components/LandingPage';
 import Signup from './react-components/Signup';
 
 class App extends React.Component {
