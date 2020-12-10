@@ -3,6 +3,10 @@ import Sidebar from '../Sidebar';
 import OrganizationCard from '../UserCard/OrganizationCard';
 
 class ExplorePage extends Component {
+     constructor(props) {
+          super(props);
+          this.props.history.push("/dashboard");
+      }
      render() {
           return (
                <div className="pageContainer">
