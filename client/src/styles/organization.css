@@ -10,15 +10,10 @@
     text-align: center;
 }
 
-.organizationContainer {
-    padding: 2px 16px;
-    height: 15rem;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
+
 
 .organizationCards {
+    margin-left: 240px;
     display: flex;
     flex-wrap: wrap;
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { uid } from 'react-uid';
 import { Link } from 'react-router-dom';
 
+
 class Sidebar extends Component {
      state = {
           menuList: ['Your Profile', 'Explore', 'UofT']

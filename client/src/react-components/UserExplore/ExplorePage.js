@@ -6,7 +6,6 @@ class ExplorePage extends Component {
      render() {
           return (
                <div className="pageContainer">
-                    <Sidebar></Sidebar>
                     <div id="homeHeader"> 
                          <h1>Explore Organizations</h1>
                          <OrganizationCard></OrganizationCard>

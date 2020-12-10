@@ -6,7 +6,6 @@ class AdminOrganizationHomePage extends Component {
      render() {
           return (
                <div className="pageContainer">
-                    <Sidebar isAdmin="true"></Sidebar>
                     <div id="homeHeader"> 
                          <h1>Your Organizations</h1>
                          <AdminOrganizationCard></AdminOrganizationCard>

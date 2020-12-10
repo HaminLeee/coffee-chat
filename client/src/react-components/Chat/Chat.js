@@ -6,7 +6,7 @@ import Message from "./Message";
 class Chat extends Component {
     state = {
         pageName: 'Chat',
-        active: true,
+        active: false,
         contacts: ["Umid", "Hamin", "Thuy", "Addie", "Trump", "Biden", "ADD"],
         messages: [
             {content:"Hi!", from: "Umid", to: "Thuy"},

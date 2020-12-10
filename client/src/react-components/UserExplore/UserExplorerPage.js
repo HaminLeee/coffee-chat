@@ -7,7 +7,6 @@ class UserExplorerPage extends Component {
      render() {
           return (
                <div className="pageContainer">
-                    <Sidebar></Sidebar>
                     <div id="homeHeader">
                          <h1>User's Profile</h1>
                          <UserExplorer></UserExplorer>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from "./react-components/Navbar";
+import LoginNavbar from "./react-components/Navbar/LoginNavbar";
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { checkSession } from "./actions/user";
 import UserHomePage from './react-components/UserCard/UserHomePage';
@@ -34,34 +35,33 @@ class App extends React.Component {
             const { currentUser, isAuthenticated } = this.state;
             const NavbarComp = ({ currentUser }) => {
                   if (!currentUser) {
-                        return <Navbar id="navbar" isAuthenticated={false}/>;
-                  } else {
-                        return <Navbar id="navbar" isAuthenticated={true}/>;
+                        return <LoginNavbar id="navbar" />;
                   }
+                  return <Navbar id="navbar"/>;
+                  
             };
             return (
             <div id="app">
-                  <NavbarComp currentUser={currentUser}/>
                   <BrowserRouter>
+                        <NavbarComp currentUser={this.state.currentUser}/>
                         <Switch>
                               <Route
                               exact path={["/login", "/dashboard"] /* any of these URLs are accepted. */ }
                               render={ props => (
                                     <div>
                                           { /* Different componenets rendered depending on if someone is logged in. */}
-                                          {!currentUser ? <LoginPage {...props} app={this} /> : <UserHomePage {...props} app={this} />}
+                                          {!currentUser ? <LoginPage {...props} app={this} /> : <ExplorePage {...props} app={this} />}
                                     </div>              
                                     
                               )}
                               />
-                              
       
                               <Route exact path='/'
                                     render={() => <SplashPage/>} />
                               <Route exact path='/signup'
                                     render={props => <Signup {...props}/>} />
                               <Route exact path='/explore'
-                                    render={() => <ExplorePage/>} />
+                                    render={() => <UserHomePage/>} />
                               <Route exact path='/admin'
                                     render={() => <AdminOrganizationHomePage/>}/>
                               <Route exact path='/admin/user'

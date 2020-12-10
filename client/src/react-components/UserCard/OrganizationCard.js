@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/organization.css';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 class OrganizationCard extends Component {
      state = {
@@ -11,20 +18,29 @@ class OrganizationCard extends Component {
      render() {
           const organizationCards = this.state.organizations.map((organization) => {
                return (
-                   <div className="organizationCard">
-                        <div className="organizationContainer">
-                            <div>
-                                <h2><b>{organization}</b></h2>
-                            </div>
-                            <div>
-                                {/*we only hard-code created the pages for Uoft right now
-                                Our others pages will be blank */}
-                                 <Link to={ '/organization/' + organization }>
-                                        <button className="exploreButton"> Explore </button>
-                                 </Link>
-                            </div>
-                        </div>
-                   </div>
+                    <Card className="organizationCard">
+                         <CardActionArea>
+                         <CardMedia
+                              className=""
+                              image="/static/images/cards/contemplative-reptile.jpg"
+                              title="Contemplative Reptile"
+                         />
+                         <CardContent>
+                              <Typography gutterBottom variant="h5" component="h2">
+                              {organization} 
+                              </Typography>
+                              <Typography variant="body2" color="textSecondary" component="p">
+                              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                              across all continents except Antarctica
+                              </Typography>
+                         </CardContent>
+                         </CardActionArea>
+                         <CardActions>
+                         <Button size="medium" color="primary" href={ '/organization/' + organization }>
+                              Explore
+                         </Button>
+                         </CardActions>
+                    </Card>
                )
           })
           return (

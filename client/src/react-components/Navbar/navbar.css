@@ -1,0 +1,10 @@
+.drawer {
+    width: 170px;
+    flex-shrink: 0;
+}
+
+.appBar {
+    width: calc(100% - 240px);
+    /* min-width:calc(100% - 240px) ; */
+    margin-left: 170px;
+}
