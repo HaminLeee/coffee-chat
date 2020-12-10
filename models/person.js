@@ -18,7 +18,7 @@ const Person = mongoose.model('Person', {
 	email: {
 		type: String,
 		required: true,
-		minlegth: 1
+		minlegth: 1,
 		trim: true
 	},
     creator: {
