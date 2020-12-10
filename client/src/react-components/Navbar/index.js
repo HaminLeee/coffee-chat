@@ -34,7 +34,7 @@ class Navbar extends Component {
               <div className="toolbar" />
               <Divider />
               <List>
-                {['Coffee Chat', 'Home'].map((text, index) => (
+                {['Coffee Chat', 'Home', 'Organizations'].map((text, index) => (
                   // <Link to="/dashboard">
                     <ListItem button key={text} component={Link} to={'/dashboard'}>
                       <ListItemIcon>
@@ -47,8 +47,8 @@ class Navbar extends Component {
               </List>
               <Divider />
               <List>
-                {['Organizations','Logout'].map((text, index) => (
-                  <ListItem button key={text} component={Link} to={'/' + text}>
+                {['Logout'].map((text, index) => (
+                  <ListItem button key={text} component={Link} to={'/'} onClick={() => logout(app)}>
                     <ListItemIcon onClick={() => logout(app)}>
                       {index % 2 === 0 ? <AccountBalanceIcon color="primary" /> :<ExitToAppIcon onClick={() => logout(app)}/>}
                     </ListItemIcon>
