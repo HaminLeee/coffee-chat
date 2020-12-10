@@ -19,6 +19,18 @@ const ContactSchema = mongoose.Schema({
 // Making a Mongoose model a little differently: a Mongoose Schema
 // Allows us to add additional functionality.
 const UserSchema = new mongoose.Schema({
+	name: {
+		type: String,
+		required: true,
+		minlegth: 1,
+		trim: true
+	},
+	occupation: {
+		type: String,
+		required: true,
+		minlegth: 1,
+		trim: true
+	},
 	email: {
 		type: String,
 		required: true,
