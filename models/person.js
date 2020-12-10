@@ -15,6 +15,12 @@ const Person = mongoose.model('Person', {
         minlegth: 1,
         trim: true
     },
+	email: {
+		type: String,
+		required: true,
+		minlegth: 1,
+		trim: true
+	},
     creator: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true
