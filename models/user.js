@@ -14,6 +14,11 @@ const ContactSchema = mongoose.Schema({
 		type: String,
 		required: true,
 		minLength: 1
+	},
+	email: {
+		type: String,
+		required: true,
+		minLength: 1
 	}
 })
 // Making a Mongoose model a little differently: a Mongoose Schema
