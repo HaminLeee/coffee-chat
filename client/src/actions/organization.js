@@ -107,3 +107,34 @@ export const getAllOrganization = (orgComp) => {
             console.log(error)
         })
 }
+
+export const deleteOrganization = (addOrgComp, id) => {
+    let url = "/api/organization/" + id
+    const request = new Request(url, {
+        method: "delete",
+        body: JSON.stringify(addOrgComp.state),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        } 
+    })
+     // Send the request with fetch()
+     fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                console.log('Successfully delete organization')
+                return res.json();
+            }
+        })
+        .then(json => {
+            console.log(json)
+            if(json) {
+                let updated = addOrgComp.state.organizations.filter((org) => org._id != id);
+                
+                addOrgComp.setState({organizations: updated,  currentUser: json.currentUser, isAdmin: json.isAdmin })
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}

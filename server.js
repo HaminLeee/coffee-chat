@@ -154,18 +154,20 @@ app.post('/api/users', mongoChecker, async (req, res) => {
     }
 })
 
+app.post('/api/followOrganization', mongoChecker, async (req, res) => {
+    log(req.body)
+    // Find user by ID
+
+    // Add to subdocument of Organizatio model
+    
+})
+
 /** Student resource routes **/
-// a POST route to *create* a student
-app.post('/api/person', mongoChecker, authenticate, async (req, res) => {
-    log(`Adding person ${req.body.name}, created by user ${req.user._id}`)
-
-    // Create a new student using the Student mongoose model
-    const person = new Person({
-        name: req.body.name,
-        occupation: req.body.occupation,
-        creator: req.user._id // creator id from the authenticate middleware
-    })
-
+// Get user
+app.get('/api/user', mongoChecker, authenticate, async (req, res) => {
+    // Find user Given Id 
+    
+    // Get info of the user
 
     // Save student to the database
     // async-await version:
@@ -183,9 +185,23 @@ app.post('/api/person', mongoChecker, authenticate, async (req, res) => {
 })
 
 // a GET route to get all students
-app.get('/api/people', mongoChecker, authenticate, async (req, res) => {
+app.get('/api/allUsers', mongoChecker, authenticate, async (req, res) => {
 
-    // Get the students
+    // Get allUsers
+    try {
+        const people = await Person.find({creator: req.user._id})
+        // res.send(students) // just the array
+        res.send({ people }) // can wrap students in object if want to add more properties
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+
+})
+// Get all user given orgId
+app.get('/api/allUsers/:orgId', mongoChecker, authenticate, async (req, res) => {    
+
+    // Get allUsers
     try {
         const people = await Person.find({creator: req.user._id})
         // res.send(students) // just the array
@@ -226,6 +242,41 @@ app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
         }
     }
 })
+
+/// Route for deleting organization  
+// Returned JSON should have the updated restaurant database  
+//   document from which the reservation was deleted, AND the reservation subdocument deleted:  
+//   { "reservation": <reservation subdocument>, "restaurant": <entire restaurant document>}  
+// DELETE /api/organization/<organization_id>/ 
+
+app.delete('/api/organization/:id', async (req, res) => {  
+    const id = req.params.id;  
+    if (!ObjectID.isValid(id)) {  
+        res.status(404).send();  
+        return;  
+    }  
+  
+
+    // Add code here  
+    try {  
+        const organization = await Organization.findById(id);  
+        if (!organization) {  
+            res.status(404).send('Resource not found');  
+            return;  
+        }   
+        await organization.deleteOne({_id: id});
+        res.send({organization});  
+    } catch (error) {  
+        log(error);  
+        if (isMongoError(error)) {  
+            res.status(500).send('Internal server error');  
+        } else {  
+            res.status(400).send('Bad Request');  
+        }  
+    }  
+  
+})  
+  
 
 // a GET route to get all students
 app.get('/api/admin/organizations', mongoChecker, authenticate, async (req, res) => {

@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { addOrganization, checkSession, updateOrgForm, getAdminAllOrganization } from '../../actions/organization';
+import { addOrganization, deleteOrganization, updateOrgForm, getAdminAllOrganization } from '../../actions/organization';
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import './index.css'
@@ -70,8 +70,8 @@ class AdminOrganizationCard extends Component {
                          <Button size="medium" color="primary" href="/admin/user">
                               View Members
                          </Button>
-                         <Button className="delOrgButton" onClick={() => this.deleteOrganization(organization)} size="medium" color="secondary">
-                              Delete
+                         <Button className="delOrgButton" onClick={() => deleteOrganization(this, organization._id)} size="medium" color="secondary">
+                              Delete 
                          </Button>
                          </CardActions>
                     </Card>
