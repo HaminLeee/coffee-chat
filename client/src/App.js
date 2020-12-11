@@ -21,7 +21,7 @@ class App extends React.Component {
       // global state passed down includes the current logged in user.
       state = {
             currentUser: null,
-            isAuthenticated: false
+            isAdmin: false
       }
       componentDidMount() {
             if (this.state.currentUser) {
@@ -32,7 +32,7 @@ class App extends React.Component {
       }
       
       render() {
-            const { currentUser, isAuthenticated } = this.state;
+            const { currentUser, isAdmin } = this.state;
             const NavbarComp = ({ currentUser }) => {
                   if (!currentUser) {
                         return <LoginNavbar id="navbar" app={this}/>;
@@ -46,11 +46,11 @@ class App extends React.Component {
                         <NavbarComp currentUser={this.state.currentUser}/>
                         <Switch>
                               <Route
-                              exact path={["/login", "/dashboard"] /* any of these URLs are accepted. */ }
+                              exact path={["/login", "/dashboard", "/admin"] /* any of these URLs are accepted. */ }
                               render={ props => (
                                     <div>
                                           { /* Different componenets rendered depending on if someone is logged in. */}
-                                          {!currentUser ? <LoginPage {...props} app={this} /> : <ExplorePage {...props} app={this} />}
+                                          {!currentUser ? <LoginPage {...props} app={this} /> : !isAdmin ? <ExplorePage {...props} app={this}/> : <AdminOrganizationHomePage {...props} app={this}/>}
                                     </div>              
                                     
                               )}
