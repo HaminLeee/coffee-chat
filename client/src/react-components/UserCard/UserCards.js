@@ -44,7 +44,7 @@ class UserCards extends Component {
                          <CardActionArea>
                          <CardMedia
                               className=""
-                              image="/static/images/cards/contemplative-reptile.jpg"
+                              image=""
                               title="Contemplative Reptile"
                          />
                          <CardContent>
@@ -57,7 +57,7 @@ class UserCards extends Component {
                          </CardContent>
                          </CardActionArea>
                          <CardActions>
-                         <Button size="medium" color="primary" href={ '/user/explorer' }>
+                         <Button size="medium" color="primary" href={ '/user/' + user._id }>
                               About Me
                          </Button>
                          <Button size="medium" color="secondary" onClick={this.startConv}>

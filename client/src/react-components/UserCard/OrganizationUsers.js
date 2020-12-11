@@ -10,7 +10,7 @@ class OrganizationUsers extends Component {
 
      state = {
           message: { type: "", body: "" },
-          pageName: '',
+          pageName: 'Amazon',
      }
 
      componentDidMount() {

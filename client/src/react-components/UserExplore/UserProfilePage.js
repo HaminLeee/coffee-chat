@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import Sidebar from '../Sidebar';
-import UserExplorer from './UserExplorer';
+import UserProfile from './UserProfile';
 
-class UserExplorerPage extends Component {
+class UserProfilePage extends Component {
      
      render() {
           return (
                <div className="pageContainer">
                     <div id="homeHeader">
                          <h1>User's Profile</h1>
-                         <UserExplorer></UserExplorer>
+                         <UserProfile></UserProfile>
                          
                     </div>
                     
@@ -18,4 +18,4 @@ class UserExplorerPage extends Component {
      }
 }
 
-export default UserExplorerPage;
+export default UserProfilePage;

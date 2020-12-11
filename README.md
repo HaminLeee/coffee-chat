@@ -83,10 +83,11 @@ yarn start
       - returns the user that has been created, contacts is initialized as empty list
           - {email:"", .... , contacts:[]}
 
-- GET /api/joinOrganization
+- GET /api/joinOrganization/:orgId
      - Join an organization as a regular user
-     - body = {
-
+     - Find the organization id by req.params.orgId and the user by req.user._id
+     - Returns = {
+          people: [{user 1}, .... {user n}]
      }
 
 - GET /api/user/:uid

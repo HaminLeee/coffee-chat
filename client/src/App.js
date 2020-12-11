@@ -8,7 +8,7 @@ import LoginPage from './react-components/Login';
 import Dashboard from './react-components/UserExplore/Dashboard';
 import AdminOrganizationHomePage from './react-components/AdminComponent/AdminOrganizationHomePage';
 import AdminUserHomePage from './react-components/AdminComponent/AdminUserHomePage';
-import UserExplorerPage from './react-components/UserExplore/UserExplorerPage';
+import UserProfilePage from './react-components/UserExplore/UserProfilePage';
 import SplashPage from './react-components/LandingPage';
 import Signup from './react-components/Signup';
 
@@ -68,14 +68,14 @@ class App extends React.Component {
                                      
                                     <Route exact path='/organization/:orgName'
                                           component={OrganizationUsers}/>
-                                    <Route exact path='/user/explorer'
+                                    <Route exact path='/user/:id'
                                           render={props => (
                                                 <div>
-                                                      {!currentUser ? <LoginPage {...props} app={this}/> : <UserExplorerPage {...props} app={this}/>}
+                                                      <UserProfilePage {...props} app={this}/>
                                                 </div>
                                           ) 
                                     }/>
-            
+
                                     { /* 404 if URL isn't expected. */}
                                     <Route render={() => <div>404 Not found</div>} />
                                     
