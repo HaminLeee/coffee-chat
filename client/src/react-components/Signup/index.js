@@ -29,8 +29,30 @@ class Signup extends React.Component {
                     display="flex"
                 >
                     <h2>Sign Up</h2>
+                    <TextField
+                        required
+                        name="name"
+                        label="Name"
+                        pattern="/S+@/"
+                        minLength={2}
+                        className="login__input app__input app__horizontal-center"
+                        margin="normal"
+                        onChange={e => updateLoginForm(this, e.target)}
+                    />
 
                     <TextField
+                        required
+                        name="occupation"
+                        label="Occupation"
+                        type="string"
+                        minLength={5}
+                        className="login__input app__input app__horizontal-center"
+                        margin="normal"
+                        onChange={e => updateLoginForm(this, e.target)}
+                    />
+
+                    <TextField
+                        required
                         name="email"
                         label="Email"
                         className="login__input app__input app__horizontal-center"
@@ -39,6 +61,7 @@ class Signup extends React.Component {
                     />
 
                     <TextField
+                        required
                         name="password"
                         label="Password"
                         type="password"

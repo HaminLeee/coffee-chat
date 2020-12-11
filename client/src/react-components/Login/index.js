@@ -27,7 +27,6 @@ class LoginPage extends React.Component {
                 <div className="login__card center"
                     display="flex"
                  >
-                     
                     <h2>Log in</h2>
 
                     <TextField

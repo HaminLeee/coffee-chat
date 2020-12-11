@@ -131,7 +131,11 @@ app.post('/api/users', mongoChecker, async (req, res) => {
     // Create a new user
     const user = new User({
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        name: req.body.name,
+        occupation: req.body.occupation,
+        contacts: [],
+
     })
 
     try {
@@ -200,8 +204,7 @@ app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
     // Create a new student using the Student mongoose model
     const organization = new Organization({
         name: req.body.name,
-        people: req.body.people,
-        creator: req.user._id // creator id from the authenticate middleware
+        people: [],
     })
 
 
