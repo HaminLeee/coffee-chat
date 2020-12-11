@@ -15,13 +15,13 @@ const Organization = mongoose.model('Organization', {
 		minlegth: 1,
 		trim: true
 	},
+	description: {
+		type: String,
+		required: true,
+		minlegth: 3,
+	},
 	people: {
 		type: [MemberSchema],
-		// default: 1
-	},
-	creator: {
-		type: mongoose.Schema.Types.ObjectId,
-		required: true
 	}
 })
 

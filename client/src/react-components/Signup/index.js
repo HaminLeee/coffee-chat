@@ -14,14 +14,18 @@ class Signup extends React.Component {
         this.props.history.push("/signup");
     }
 
-    // login form state
-    state = {
-        email: "",
-        password: ""
-    }
-
     render() {
         const { app } = this.props
+        /*
+            This is where we pack the info needed fo signup
+            signup(this, app) will call /api/user POST api call with body of
+            {
+                name: name,
+                occupation: occupation,
+                email: email,
+                password: password,
+            }
+        */
 
         return (
             <div className="login__bg-image center">
