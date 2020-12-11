@@ -122,6 +122,23 @@ yarn start
      - Find all the organizations that exists. This is used for the explore page in the user view
      - returns list of all organizations
           - {organizations: [{organization 1} .... {organization n}]}
+ 
+- POST /api/messages
+     - post message between logged in user and given user, this is used in the function sendMessagesToUsers in the mesage.js
+
+- POST /api/getmessages (since GET method don't have body in their request)
+     - get messages between logged in user and given user
+     - returns list of all messages between the logged in user and the given user.
+    
+- GET /api/contacts
+     - get the contacts of the logged in user
+     - return list of contacts of logged in user:
+          - {contacts: [{contact 1} .... {contact n}]}
+
+- POST /api/contacts
+     - post the contacts of the logged in user
+     - create the contact of the logged in user inside the given user's contact list, and create the contact of the given user inside the logged in user's contact list.
+
 
 
 
