@@ -13,11 +13,6 @@ class LoginPage extends React.Component {
         this.props.history.push("/login");
     }
 
-    // login form state
-    state = {
-        email: "",
-        password: ""
-    }
 
     render() {
         const { app } = this.props

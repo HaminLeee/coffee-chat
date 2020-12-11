@@ -4,11 +4,12 @@ import AdminUserCards from './AdminUserCards';
 
 class AdminUserHomePage extends Component {
      render() {
+          const {app} = this.props;
           return (
                <div className="pageContainer">
                     <div id="homeHeader"> 
                          <h1>Your Users</h1>
-                         <AdminUserCards></AdminUserCards>
+                         <AdminUserCards app={app}></AdminUserCards>
                     </div>
                </div>
           );

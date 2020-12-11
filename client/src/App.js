@@ -61,15 +61,15 @@ class App extends React.Component {
                               <Route exact path='/signup'
                                     render={props => <Signup {...props}/>} />
                               <Route exact path='/explore'
-                                    render={() => <UserHomePage/>} />
-                              <Route exact path='/admin'
-                                    render={() => <AdminOrganizationHomePage/>}/>
+                                    render={() => <UserHomePage app={this}/>} />
+                              <Route exact path='/admin/tmp'
+                                    render={() => <AdminOrganizationHomePage app={this}/>}/>
                               <Route exact path='/admin/user'
-                                    render={() => <AdminUserHomePage/>}/>     
+                                    render={() => <AdminUserHomePage app={this}/>} />     
                               <Route exact path='/organization/:orgName'
                                     component={UserHomePage}/>
                               <Route exact path='/user/explorer'
-                                    render={() => <UserExplorerPage/>}/>
+                                    render={() => <UserExplorerPage app={this}/>}/>
       
                               { /* 404 if URL isn't expected. */}
                               <Route render={() => <div>404 Not found</div>} />

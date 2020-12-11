@@ -7,6 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { addOrganization, checkSession, updateOrgForm } from '../../actions/organization';
+import TextField from "@material-ui/core/TextField";
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 
 class AdminOrganizationCard extends Component {
@@ -18,25 +21,25 @@ class AdminOrganizationCard extends Component {
                newOrganizationName: "",
                error: ""
           }
-          this.addOrganization = this.addOrganization.bind(this);
+          // this.addOrganization = this.addOrganization.bind(this);
           this.deleteOrganization = this.deleteOrganization.bind(this);
           this.handleInputChange = this.handleInputChange.bind(this);
      }
 
-     addOrganization = () => {
-          if (this.state.newOrganizationName.length > 0) {
-               this.state.organizations.push(this.state.newOrganizationName);
-               let list = this.state.organizations;
-               this.setState({
-                    organizations: list,
-                    error: ""
-               })
-          } else {
-               this.setState({
-                    error: "Input at least one character"
-               })
-          }
-     }
+     // addOrganization = () => {
+     //      if (this.state.newOrganizationName.length > 0) {
+     //           this.state.organizations.push(this.state.newOrganizationName);
+     //           let list = this.state.organizations;
+     //           this.setState({
+     //                organizations: list,
+     //                error: ""
+     //           })
+     //      } else {
+     //           this.setState({
+     //                error: "Input at least one character"
+     //           })
+     //      }
+     // }
 
      deleteOrganization = (organization) => {
           let updated = this.state.organizations.filter((org) => org !== organization);
@@ -54,6 +57,7 @@ class AdminOrganizationCard extends Component {
      }
 
      render() {
+          const {app} = this.props;
           const organizationCards = this.state.organizations.map((organization) => {
                return (
                     <Card className="organizationCard">
@@ -91,12 +95,44 @@ class AdminOrganizationCard extends Component {
                          <form>
                               <label>
                                    <h4>New Organization Name</h4>
-                                   <input required pattern="[A-Z0-9a-z]{1-20}" onChange={this.handleInputChange} type="text" name="name" />
+                                   <TextField 
+                                        required 
+                                        variant="outlined"
+                                        placeholder="Enter the Name"
+                                        minLength={1}
+                                        size="small"
+                                        label="Name"
+                                        onChange={e => updateOrgForm(this, e.target)} 
+                                        type="text" 
+                                        name="name" />
+                                   <br></br>
+                                   <br></br>
+                                   <TextField 
+                                        required
+                                        variant="outlined"
+                                        label="Description"
+                                        placeholder="Add a short description"
+                                        multiline
+                                        rows={3}
+                                        size="large"
+                                        minLength={3}
+                                        onChange={e => updateOrgForm(this, e.target)} 
+                                        type="text" 
+                                        name="description" />
                                    {this.state.error.length > 1 && <h5>{this.state.error}</h5>}
                               </label>
                          </form>
                          <br></br>
-                         <button className="addOrgButton" onClick={this.addOrganization}> Add Organization </button>
+                         <Button
+                              variant="contained"
+                              color="default"
+                              startIcon={<CloudUploadIcon />}
+                              color="primary"
+                              onClick={() => addOrganization(this, app)}
+                         >
+                              Add Organization
+                         </Button>
+                     
                     </div>
                     <div className="organizationCards">
                          {organizationCards}
