@@ -20,6 +20,10 @@ const Organization = mongoose.model('Organization', {
 		required: true,
 		minlegth: 3,
 	},
+	creator: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true
+	},
 	people: {
 		type: [MemberSchema],
 	}

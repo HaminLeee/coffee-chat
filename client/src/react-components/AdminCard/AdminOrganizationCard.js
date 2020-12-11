@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { addOrganization, checkSession, updateOrgForm } from '../../actions/organization';
+import { addOrganization, checkSession, updateOrgForm, getAllOrganization } from '../../actions/organization';
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
@@ -18,36 +18,19 @@ class AdminOrganizationCard extends Component {
           this.state = {
                name: "",
                description: "",
-               organizations: ['UofT', 'CSC369', 'CSSU', 'CSC309', 'Trinity College', 'Arts & Science', 'CSC108', 'CSC-TAs'],
+               organizations: [],
           }
-
-          // this.state = {
-          //      newOrganizationName: "",
-          //      error: ""
-          // }
-          // this.addOrganization = this.addOrganization.bind(this);
+          // this.componentDidMount = this.componentDidMount.bind(this);
           this.deleteOrganization = this.deleteOrganization.bind(this);
-          // this.handleInputChange = this.handleInputChange.bind(this);
+          this.props.history.push('/admin');
+     }
+     
+     async componentDidMount() {
+          const organizations = await getAllOrganization(this);
+          await console.log(organizations)
      }
 
 
-
-
-
-     // addOrganization = () => {
-     //      if (this.state.newOrganizationName.length > 0) {
-     //           this.state.organizations.push(this.state.newOrganizationName);
-     //           let list = this.state.organizations;
-     //           this.setState({
-     //                organizations: list,
-     //                error: ""
-     //           })
-     //      } else {
-     //           this.setState({
-     //                error: "Input at least one character"
-     //           })
-     //      }
-     // }
 
      deleteOrganization = (organization) => {
           let updated = this.state.organizations.filter((org) => org !== organization);
@@ -61,6 +44,8 @@ class AdminOrganizationCard extends Component {
 
      render() {
           const {app} = this.props;
+          console.log(this.state.organizations);
+          
           const organizationCards = this.state.organizations.map((organization) => {
                return (
                     <Card className="organizationCard">
@@ -72,11 +57,10 @@ class AdminOrganizationCard extends Component {
                          />
                          <CardContent>
                               <Typography gutterBottom variant="h5" component="h2">
-                              {organization}
+                              {organization.name}
                               </Typography>
                               <Typography variant="body2" color="textSecondary" component="p">
-                              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                              across all continents except Antarctica
+                              {organization.description}
                               </Typography>
                          </CardContent>
                          </CardActionArea>

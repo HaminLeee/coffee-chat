@@ -34,6 +34,7 @@ export const updateOrgForm = (addOrgComp, field) => {
 };
 
 export const addOrganization = (addOrgComp, app) => {
+    console.log(addOrgComp)
     const request = new Request("/api/organization", {
         method: "post",
         body: JSON.stringify(addOrgComp.state),
@@ -50,7 +51,40 @@ export const addOrganization = (addOrgComp, app) => {
                 return res.json();
             }
         })
+        .then(json => {
+            console.log(json)
+            if(json) {
+                let updated =  [];
+                console.log(addOrgComp.state)
+                updated = addOrgComp.state.organizations;
+                console.log(updated.push(json))
+                addOrgComp.setState({organizations: updated})
+            }
+            return json;
+        })
         .catch(error => {
             console.log(error);
         });
+}
+
+export const getAllOrganization = (orgComp) => {
+    const url = "/api/organizations";
+  
+    console.log(orgComp);
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            console.log(json)
+            // if(json) {
+            //     // console.log(result);
+            orgComp.setState({organizations: json.organizations})
+            // }
+        })
+        .catch(error=> {
+            console.log(error)
+        })
 }

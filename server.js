@@ -207,6 +207,7 @@ app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
     const organization = new Organization({
         name: req.body.name,
         description: req.body.description,
+        creator: req.user._id,
         people: [],
     })
 
@@ -230,9 +231,9 @@ app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
 app.get('/api/organizations', mongoChecker, authenticate, async (req, res) => {
     // Get the students
     try {
-        const people = await Organization.find({creator: req.user._id})
+        const organizations = await Organization.find({creator: req.user._id})
         // res.send(students) // just the array
-        res.send({ people }) // can wrap students in object if want to add more properties
+        res.send({ organizations }) // can wrap students in object if want to add more properties
     } catch(error) {
         log(error)
         res.status(500).send("Internal Server Error")
