@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import Sidebar from '../Sidebar';
 import UserCards from './UserCards';
 
-class UserHomePage extends Component {
-    state = {
-        pageName: 'UofT',
-    }
-    constructor(props) {
-        super(props);
-    }
+class OrganizationUsers extends Component {
 
-    state = {
-          message: { type: "", body: "" }
+     constructor(props) {
+          super(props);
+     }
+
+     state = {
+          message: { type: "", body: "" },
+          pageName: '',
+     }
+
+     componentDidMount() {
+          
      }
 
      render() {
@@ -26,4 +29,4 @@ class UserHomePage extends Component {
      }
 }
 
-export default UserHomePage;
+export default OrganizationUsers;

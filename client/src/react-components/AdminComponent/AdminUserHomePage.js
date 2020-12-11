@@ -8,7 +8,7 @@ class AdminUserHomePage extends Component {
           return (
                <div className="pageContainer">
                     <div id="homeHeader"> 
-                         <h1>Your Users</h1>
+                         <h1>Organization Users</h1>
                          <AdminUserCards app={app}></AdminUserCards>
                     </div>
                </div>

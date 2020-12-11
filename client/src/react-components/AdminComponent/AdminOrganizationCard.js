@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { addOrganization, deleteOrganization, updateOrgForm, getAdminAllOrganization } from '../../actions/organization';
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import Chat from '../Chat/Chat'
 import './index.css'
 
 
@@ -129,6 +130,7 @@ class AdminOrganizationCard extends Component {
                     <div className="organizationCards">
                          {organizationCards}
                     </div>
+                    <Chat></Chat>
                </div>
           );
      }

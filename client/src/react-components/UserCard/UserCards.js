@@ -16,7 +16,6 @@ import {getAllUsers} from "../../actions/user";
 
 class UserCards extends Component {
      state = {
-          userNames: ['Hamin', 'Thuy', 'Umid', 'Mark', 'Matt', 'Gary', 'Benjamin', 'Robert', 'Berk', 'Ethan'],
           chatOn: false,
           people: []
 

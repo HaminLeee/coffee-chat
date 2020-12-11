@@ -9,6 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { getAllOrganization, joinOrganization } from '../../actions/organization';
+import Chat from '../Chat/Chat';
 
 class OrganizationCard extends Component {
      constructor(props) {
@@ -60,9 +61,12 @@ class OrganizationCard extends Component {
                )
           })
           return (
-              <div className="organizationCards">
-                   {organizationCards}
-              </div>
+               <div>
+                    <div className="organizationCards">
+                         {organizationCards}
+                    </div>
+                    <Chat></Chat>
+               </div>
           );
      }
 }

@@ -3,7 +3,7 @@ import Navbar from "./react-components/Navbar";
 import LoginNavbar from "./react-components/Navbar/LoginNavbar";
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { checkSession } from "./actions/user";
-import UserHomePage from './react-components/UserCard/UserHomePage';
+import OrganizationUsers from './react-components/UserCard/OrganizationUsers';
 import LoginPage from './react-components/Login';
 import Dashboard from './react-components/UserExplore/Dashboard';
 import AdminOrganizationHomePage from './react-components/AdminComponent/AdminOrganizationHomePage';
@@ -56,7 +56,7 @@ class App extends React.Component {
                                     <Route exact path='/signup'
                                           render={props => <Signup {...props}/>} />
                                     <Route exact path='/explore'
-                                          render={() => <UserHomePage app={this}/>} />
+                                          render={() => <OrganizationUsers app={this}/>} />
                                     <Route exact path='/admin/user'
                                           render={props => (
                                                 <div>
@@ -67,7 +67,7 @@ class App extends React.Component {
                                     />
                                      
                                     <Route exact path='/organization/:orgName'
-                                          component={UserHomePage}/>
+                                          component={OrganizationUsers}/>
                                     <Route exact path='/user/explorer'
                                           render={props => (
                                                 <div>
@@ -78,6 +78,7 @@ class App extends React.Component {
             
                                     { /* 404 if URL isn't expected. */}
                                     <Route render={() => <div>404 Not found</div>} />
+                                    
             
                               </Switch>
                         </BrowserRouter>

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { getAllUsers , updateOrgForm } from '../../actions/organization';
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import Chat from '../Chat/Chat';
 
 class AdminUserCards extends Component {
      state = {
@@ -108,6 +109,7 @@ class AdminUserCards extends Component {
                     <div className="organizationCards">
                          {userCards}
                     </div> 
+                    <Chat></Chat>
                </div>
           );
      }
