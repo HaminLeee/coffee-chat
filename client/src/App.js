@@ -15,24 +15,21 @@ import Signup from './react-components/Signup';
 class App extends React.Component {
       constructor(props) {
             super(props);
+            this.state = {
+                  currentUser: null,
+                  isAdmin: null
+            } 
             checkSession(this); // sees if a user is logged in.
       }
       
-      // global state passed down includes the current logged in user.
-      state = {
-            currentUser: null,
-            isAdmin: false
-      }
-      componentDidMount() {
-            if (this.state.currentUser) {
-                  this.setState({
-                        isAuthenticated: true
-                  })
-            }
-      }
+ 
+  
+      // componentDidMount() {
+      // }
       
       render() {
-            const { currentUser, isAdmin } = this.state;
+            let { currentUser, isAdmin } = this.state;
+            isAdmin = currentUser === 'admin' ? true : false;
             const NavbarComp = ({ currentUser }) => {
                   if (!currentUser) {
                         return <LoginNavbar id="navbar" app={this}/>;
@@ -40,6 +37,7 @@ class App extends React.Component {
                   return <Navbar id="navbar" app={this}/>;
                   
             };
+            console.log(this)
             return (
                   <div id="app">
                         <BrowserRouter>
@@ -65,7 +63,7 @@ class App extends React.Component {
                                     <Route exact path='/admin/user'
                                           render={props => (
                                                 <div>
-                                                      {isAdmin ? <AdminUserHomePage {...props} app={this}/> : !currentUser ? <SplashPage /> : <ExplorePage {...props} app={this}/>}
+                                                       <AdminUserHomePage {...props} app={this}/> 
                                                 </div>
                                                 )
                                           }

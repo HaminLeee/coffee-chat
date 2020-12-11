@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { addOrganization, checkSession, updateOrgForm, getAllOrganization } from '../../actions/organization';
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import './index.css'
 
 
 class AdminOrganizationCard extends Component {
@@ -79,47 +80,49 @@ class AdminOrganizationCard extends Component {
           return (
                <div>
                     <div>
-                         <form>
-                              <label>
-                                   <h4>New Organization Name</h4>
-                                   <TextField 
-                                        required 
-                                        variant="outlined"
-                                        placeholder="Enter the Name"
-                                        minLength={1}
-                                        size="small"
-                                        label="Name"
-                                        onChange={e => updateOrgForm(this, e.target)} 
-                                        type="text" 
-                                        name="name" />
-                                   <br></br>
-                                   <br></br>
-                                   <TextField 
-                                        required
-                                        name="description" 
-                                        variant="outlined"
-                                        label="Description"
-                                        multiline
-                                        placeholder="Add a short description"
-                                        rows={3}
-                                        size="large"
-                                        minLength={3}
-                                        onChange={e => updateOrgForm(this, e.target)} 
-                                        type="text" 
-                                   />
-                                   {/* {this.state.error.length > 1 && <h5>{this.state.error}</h5>} */}
-                              </label>
-                         </form>
+                         <div className="fixed">
+                              <form >
+                                   <label>
+                                        <h4>New Organization Name</h4>
+                                        <TextField 
+                                             required 
+                                             variant="outlined"
+                                             placeholder="Enter the Name"
+                                             minLength={1}
+                                             size="small"
+                                             label="Name"
+                                             onChange={e => updateOrgForm(this, e.target)} 
+                                             type="text" 
+                                             name="name" />
+                                        <br></br>
+                                        <br></br>
+                                        <TextField 
+                                             required
+                                             name="description" 
+                                             variant="outlined"
+                                             label="Description"
+                                             multiline
+                                             placeholder="Add a short description"
+                                             rows={3}
+                                             size="large"
+                                             minLength={3}
+                                             onChange={e => updateOrgForm(this, e.target)} 
+                                             type="text" 
+                                        />
+                                        {/* {this.state.error.length > 1 && <h5>{this.state.error}</h5>} */}
+                                   </label>
+                              </form>
+                              <Button
+                                   variant="contained"
+                                   color="default"
+                                   startIcon={<CloudUploadIcon />}
+                                   color="primary"
+                                   onClick={() => addOrganization(this, app)}
+                              >
+                                   Add Organization
+                              </Button>
+                         </div>
                          <br></br>
-                         <Button
-                              variant="contained"
-                              color="default"
-                              startIcon={<CloudUploadIcon />}
-                              color="primary"
-                              onClick={() => addOrganization(this, app)}
-                         >
-                              Add Organization
-                         </Button>
                      
                     </div>
                     <div className="organizationCards">

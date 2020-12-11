@@ -71,6 +71,7 @@ export const login = (loginComp, app) => {
             }
         })
         .then(json => {
+            console.log(json)
             if (json.currentUser !== undefined) {
                 app.setState({ currentUser: json.currentUser, isAdmin: json.isAdmin });
             }

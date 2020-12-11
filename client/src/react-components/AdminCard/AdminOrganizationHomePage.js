@@ -5,6 +5,7 @@ import AdminOrganizationCard from './AdminOrganizationCard';
 class AdminOrganizationHomePage extends Component {
      constructor(props) {
           super(props);
+          this.props.history.push('/admin');
      }
 
      render() {
