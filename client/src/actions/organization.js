@@ -138,3 +138,24 @@ export const deleteOrganization = (addOrgComp, id) => {
             console.log(error);
         });
 }
+
+
+export const joinOrganization = (orgComp, id) => {
+    let url = '/api/joinOrganization/' + id;
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(orgComp.state),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        } 
+    })
+    console.log(request);
+    fetch(request)
+        .then(res => {
+            return res.json()
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}

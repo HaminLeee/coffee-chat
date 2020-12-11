@@ -154,13 +154,7 @@ app.post('/api/users', mongoChecker, async (req, res) => {
     }
 })
 
-app.post('/api/joinOrganization', mongoChecker, async (req, res) => {
-    log(req.body)
-    // Find user by ID
 
-    // Add to subdocument of Organizatio model
-    
-})
 
 /** Student resource routes **/
 // Get user
@@ -187,17 +181,52 @@ app.get('/api/user/:uid', mongoChecker, authenticate, async (req, res) => {
 
 // Get all user given orgId
 app.get('/api/allUsers/:orgId', mongoChecker, authenticate, async (req, res) => {    
-
-    // Get allUsers
+    let id = req.params.orgId;
     try {
-        const people = await Person.find({creator: req.user._id})
+        const organization = await Organization.findById(id)
+        if (!organization) {  
+            res.status(404).send('Resource not found');  
+            return;  
+        }
+        // Get the people array, default is []
+        const people = organization.people;
         // res.send(students) // just the array
         res.send({ people }) // can wrap students in object if want to add more properties
     } catch(error) {
         log(error)
         res.status(500).send("Internal Server Error")
     }
+})
 
+app.post('/api/joinOrganization/:orgId', mongoChecker, authenticate, async (req, res) => {
+    const id = req.params.orgId;
+    try {  
+        const organization = await Organization.findById(id);  
+        if (!organization) {  
+            res.status(404).send('Resource not found');  
+            return;  
+        }   
+        let isDuplicate = false;
+        for (let i = 0; i < organization.people.length; i++) {
+            if (organization.people[i]._id === req.user._id) {
+                console.log(organization.people)
+                isDuplicate = true;
+            }
+        }
+        if (!isDuplicate) {
+            const newMember = await User.findById(req.user._id);
+            organization.people.push(newMember)
+            organization.save()
+        }
+        res.send(organization.people);  
+    } catch (error) {  
+        log(error);  
+        if (isMongoError(error)) {  
+            res.status(500).send('Internal server error');  
+        } else {  
+            res.status(400).send('Bad Request');  
+        }  
+    }  
 })
 
 // other student API routes can go here...

@@ -96,3 +96,20 @@ export const logout = (app) => {
             console.log(error);
         });
 };
+
+export const getAllUsers = (app, id) => {
+    let url = '/api/allUsers/' + id;
+    fetch(url)
+        .then(res => {
+            return res.json()
+        })
+        .then(json => {
+            console.log(json)
+            app.setState({
+                people: json.people
+            })
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}

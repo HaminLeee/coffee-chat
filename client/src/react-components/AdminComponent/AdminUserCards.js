@@ -7,16 +7,19 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { addOrganization, checkSession, updateOrgForm } from '../../actions/organization';
+import { getAllUsers , updateOrgForm } from '../../actions/organization';
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 class AdminUserCards extends Component {
      state = {
           userNames: ['Hamin', 'Thuy', 'Umid', 'Mark', 'Matt', 'Gary', 'Robert' ],
-          newUserName: ''
+          newUserName: '',
+          people: []
 
      }
+     
+
 
      addUser = () => {
           this.state.userNames.push(this.state.newUserName);

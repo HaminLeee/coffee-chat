@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { getAllOrganization } from '../../actions/organization';
+import { getAllOrganization, joinOrganization } from '../../actions/organization';
 
 class OrganizationCard extends Component {
      constructor(props) {
@@ -29,6 +29,7 @@ class OrganizationCard extends Component {
      render() {
           console.log(this.state.organizations);
           const organizationCards = this.state.organizations.map((organization) => {
+               console.log(organization);
                return (
                     <Card className="organizationCard">
                          <CardActionArea>
@@ -47,10 +48,11 @@ class OrganizationCard extends Component {
                               </CardContent>
                          </CardActionArea>
                          <CardActions>
-                              <Button size="medium" color="primary" href={ '/organization/' + organization }>
+                              <Button size="medium" color="primary" href={ '/organization/' + organization._id }>
                                    Explore
                               </Button>
-                              <Button size="medium" color="danger" href={ '/organization/' + organization }>
+                              <br></br>
+                              <Button size="medium" color="danger" onClick={() => joinOrganization(this, organization._id)}>
                                    Follow
                               </Button>
                          </CardActions>

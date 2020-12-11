@@ -12,11 +12,20 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import "../../actions/message"
 import {addContactUser} from "../../actions/message";
+import {getAllUsers} from "../../actions/user";
 
 class UserCards extends Component {
      state = {
           userNames: ['Hamin', 'Thuy', 'Umid', 'Mark', 'Matt', 'Gary', 'Benjamin', 'Robert', 'Berk', 'Ethan'],
-          chatOn: false
+          chatOn: false,
+          people: []
+
+     }
+
+     async componentDidMount() {
+          // Get the organization name from the relative url
+          let orgId = window.location.pathname.split("/")[2];
+          await getAllUsers(this, orgId);
      }
 
      handleOnClick = () => {
@@ -30,7 +39,7 @@ class UserCards extends Component {
      }
 
      render() {
-          const userCards = this.state.userNames.map((user) => {
+          const userCards = this.state.people.map((user) => {
                return (
                     <Card className="organizationCard">
                          <CardActionArea>
@@ -41,11 +50,10 @@ class UserCards extends Component {
                          />
                          <CardContent>
                               <Typography gutterBottom variant="h5" component="h2">
-                              {user} 
+                              {user.name} 
                               </Typography>
                               <Typography variant="body2" color="textSecondary" component="p">
-                              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                              across all continents except Antarctica
+                              {user.occupation}
                               </Typography>
                          </CardContent>
                          </CardActionArea>
