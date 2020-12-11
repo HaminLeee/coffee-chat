@@ -5,12 +5,12 @@ const mongoose = require('mongoose')
 
 
 const Message = mongoose.model('Message', {
-    fromId: {
-        type: mongoose.Schema.Types.ObjectId,
+    from: {
+        type: String,
         required: true,
     },
-    toId: {
-        type: mongoose.Schema.Types.ObjectId,
+    to: {
+        type: String,
         required: true
     },
     content: {

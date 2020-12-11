@@ -10,7 +10,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import "../../actions/message"
+import {addContactUser} from "../../actions/message";
 
 class UserCards extends Component {
      state = {
@@ -22,6 +23,10 @@ class UserCards extends Component {
           this.setState({
                chatOn: !this.state.chatOn
           })
+     }
+
+     startConv = () => {
+         addContactUser(this, {name:"TestUser", email:"test@test.com"});
      }
 
      render() {
@@ -48,7 +53,7 @@ class UserCards extends Component {
                          <Button size="medium" color="primary" href={ '/user/explorer' }>
                               About Me
                          </Button>
-                         <Button size="medium" color="secondary">
+                         <Button size="medium" color="secondary" onClick={this.startConv}>
                               Start a chat!
                          </Button>
                          </CardActions>

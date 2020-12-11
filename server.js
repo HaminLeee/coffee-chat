@@ -240,36 +240,15 @@ app.get('/api/organizations', mongoChecker, authenticate, async (req, res) => {
 })
 
 /** Message resource routes **/
-app.post('/api/messages', mongoChecker,  async (req, res) => {
 
-    // Create a new message using the Message mongoose model
-    const message = new Message({
-        "fromId": req.body.fromId,
-        "toId": req.body.toId,
-        "content": req.body.content
-    })
-
-
-    // Save message to the database
-    // async-await version:
-    try {
-        const result = await message.save()
-        res.send(result)
-    } catch(error) {
-        log(error) // log server error to the console, not to the client.
-        if (isMongoError(error)) { // check for if mongo server suddenly dissconnected before this request.
-            res.status(500).send('Internal server error')
-        } else {
-            res.status(400).send('Bad Request') // 400 for bad request gets sent to client.
-        }
-    }
-})
-
-app.get('/api/messages', mongoChecker, authenticate, async (req, res) => {
-
+/**Finding messages between logged in user and given user*/
+app.post("/api/getmessages", mongoChecker, authenticate, async (req, res) => {
     // Get the messages
+    console.log(req.user.email)
+    console.log(req.body.email)
     try {
-        const messages = await Message.find({$or: [{fromId: req.user._id}, {toId: req.user._id}]})
+        const messages = await Message.find({$or: [{$and: [{from: req.user.email}, {to: req.body.email}]},
+                {$and:[{to: req.user.email}, {from: req.body.email}]}]})
         // res.send(students) // just the array
         res.send({ messages }) // can wrap students in object if want to add more properties
     } catch(error) {
@@ -278,14 +257,60 @@ app.get('/api/messages', mongoChecker, authenticate, async (req, res) => {
     }
 
 })
-/**Finding messages between logged in user and given user*/
-app.get('/api/messages/:id', mongoChecker, authenticate, async (req, res) => {
-    const id = req.params.id;
+
+app.post('/api/messages', mongoChecker, authenticate, async (req, res) => {
+
     // Get the messages
     try {
-        const messages = await Message.find({$or: [{fromId: req.user._id, toId: id}, {toId: req.user._id, fromId: id}]})
+
+        const message = new Message({
+            "from": req.user.email,
+            "to": req.body.to,
+            "content": req.body.content
+        })
+        const result = await message.save()
+        console.log(result)
+        res.send(result)
+
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+
+})
+/**Finding contacts of user*/
+app.get('/api/contacts', mongoChecker, authenticate, async (req, res) => {
+    try {
+        const contacts = req.user.contacts;
         // res.send(students) // just the array
-        res.send({ messages }) // can wrap students in object if want to add more properties
+        res.send({ contacts }) // can wrap students in object if want to add more properties
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+})
+app.post('/api/contacts', mongoChecker, authenticate, async (req, res) => {
+    // Get the messages
+    try {
+        const contact1 = {
+            "email": req.body.email,
+            "name": req.body.name
+        }
+        req.user.contacts.push(contact1);
+        req.user.save();
+        const user = await User.findOne({email: req.body.email})
+        console.log("found user:", user)
+        if(user){
+            const contact2 = {
+                "name": req.user.name,
+                "email": req.user.email
+            }
+            user.contacts.push(contact2)
+            user.save();
+        }else{
+            console.log("couldn't find email")
+        }
+
     } catch(error) {
         log(error)
         res.status(500).send("Internal Server Error")

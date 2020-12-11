@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import { uid } from 'react-uid';
 import './chat.css';
 import Message from "./Message";
+import '../../actions/message'
+import {getContactsOfUser, getMessagesFromUser, sendMessageToUser} from "../../actions/message";
+import LoginPage from "../Login";
 
 class Chat extends Component {
     state = {
         pageName: 'Chat',
         active: false,
-        contacts: ["Umid", "Hamin", "Thuy", "Addie", "Trump", "Biden", "ADD"],
-        messages: [
-            {content:"Hi!", from: "Umid", to: "Thuy"},
-            {content:"Hi!", from: "Thuy", to: "Umid"},
-            {content:"Wassup!", from: "Umid", to: "Thuy"},
-            {content:"Have u started 311?", from: "Umid", to: "Thuy"}
-            ],
+        contacts: [],
+        messages: [],
         inputValue: "",
-        chosenContact: "",
+        chosenContact: null,
     }
     constructor(props) {
         super(props);
@@ -24,38 +22,53 @@ class Chat extends Component {
         this.onUpdate = this.onUpdate.bind(this);
         this.onClickContact = this.onClickContact.bind(this);
     }
-    onClickContact(e) {
+    onClickContact(uid, e) {
         e.preventDefault();
-        this.setState({chosenContact:  e.target.textContent});
+        this.state.contacts.forEach((contact)=>{
+            if(contact._id == uid) {
+                this.setState({chosenContact:  contact});
+                getMessagesFromUser(this);
+            }
+        })
     }
     toggleClass() {
+        if(!this.state.active){
+            console.log("enters function");
+            getContactsOfUser(this);
+        }
+        else {
+            this.setState({chosenContact: ""});
+            this.setState({messages: []});
+            this.setState({inputValue: ""});
+        }
         this.setState( {active: !this.state.active});
     };
     onSend(e) {
         e.preventDefault();
-        const newMessage = this.state.inputValue;
-        this.setState({messages:[...this.state.messages, {content:newMessage, from:"Umid", to: this.state.chosenContact}]} );
+        sendMessageToUser(this);
     }
     onUpdate(e) {
         this.setState({inputValue: e.target.value});
     }
     render() {
         const contactList = this.state.contacts.map((contact)=> {
-            if (this.state.chosenContact !== contact){
-                return (<li className="contact" onClick={this.onClickContact} key={uid(contact)}>{contact}</li>);
+            if (!this.state.chosenContact || this.state.chosenContact._id !== contact._id){
+                return (<li className="contact" onClick={this.onClickContact.bind(this, contact._id)}
+                            key={uid(contact)}>
+                    {contact.name}
+                </li>);
             }
-            else  {
-                return (<li className="contact chosen" onClick={this.onClickContact} key={uid(contact)}>{contact}</li>);
+            else {
+                return (<li className="contact chosen" onClick={this.onClickContact.bind(this, contact._id)}
+                            key={uid(contact)}>
+                    {contact.name}
+                </li>);
             }
 
         });
 
-        const messageList = this.state.messages.map((message, index ) => {
-
-            if ((message.from === this.state.chosenContact && message.to === "Umid") ||
-                (message.to === this.state.chosenContact && message.from === "Umid")) {
-                return (<Message fromMe={message.from === "Umid"} content={message.content} key={uid(message)} />)
-            }
+        const messageList = this.state.messages.map((message ) => {
+            return (<Message fromMe={message.to === this.state.chosenContact.email} content={message.content} key={uid(message)} />)
         });
 
         return (
