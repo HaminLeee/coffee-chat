@@ -66,8 +66,29 @@ export const addOrganization = (addOrgComp, app) => {
         });
 }
 
+export const getAdminAllOrganization = (orgComp) => {
+    const url = "/api/admin/organizations";
+  
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            console.log(json)
+            // if(json) {
+            //     // console.log(result);
+            orgComp.setState({organizations: json.organizations })
+            // }
+        })
+        .catch(error=> {
+            console.log(error)
+        })
+}
+
 export const getAllOrganization = (orgComp) => {
-    const url = "/api/organizations";
+    const url = "/api/allOrganizations";
   
     fetch(url)
         .then(res => {

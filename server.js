@@ -228,10 +228,23 @@ app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
 })
 
 // a GET route to get all students
-app.get('/api/organizations', mongoChecker, authenticate, async (req, res) => {
+app.get('/api/admin/organizations', mongoChecker, authenticate, async (req, res) => {
     // Get the students
     try {
         const organizations = await Organization.find({creator: req.user._id})
+        // res.send(students) // just the array
+        res.send({ organizations }) // can wrap students in object if want to add more properties
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+})
+
+// a GET route to get all students
+app.get('/api/allOrganizations', mongoChecker, authenticate, async (req, res) => {
+    // Get the students
+    try {
+        const organizations = await Organization.find()
         // res.send(students) // just the array
         res.send({ organizations }) // can wrap students in object if want to add more properties
     } catch(error) {

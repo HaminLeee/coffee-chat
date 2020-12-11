@@ -5,9 +5,9 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { checkSession } from "./actions/user";
 import UserHomePage from './react-components/UserCard/UserHomePage';
 import LoginPage from './react-components/Login';
-import ExplorePage from './react-components/UserExplore/ExplorePage';
-import AdminOrganizationHomePage from './react-components/AdminCard/AdminOrganizationHomePage';
-import AdminUserHomePage from './react-components/AdminCard/AdminUserHomePage';
+import Dashboard from './react-components/UserExplore/Dashboard';
+import AdminOrganizationHomePage from './react-components/AdminComponent/AdminOrganizationHomePage';
+import AdminUserHomePage from './react-components/AdminComponent/AdminUserHomePage';
 import UserExplorerPage from './react-components/UserExplore/UserExplorerPage';
 import SplashPage from './react-components/LandingPage';
 import Signup from './react-components/Signup';
@@ -23,9 +23,6 @@ class App extends React.Component {
       }
       
  
-  
-      // componentDidMount() {
-      // }
       
       render() {
             let { currentUser, isAdmin } = this.state;
@@ -48,7 +45,7 @@ class App extends React.Component {
                                     render={ props => (
                                           <div>
                                                 { /* Different componenets rendered depending on if someone is logged in. */}
-                                                {!currentUser ? <LoginPage {...props} app={this} /> : !isAdmin ? <ExplorePage {...props} app={this}/> : <AdminOrganizationHomePage {...props} app={this}/>}
+                                                {!currentUser ? <LoginPage {...props} app={this} /> : !isAdmin ? <Dashboard {...props} app={this}/> : <AdminOrganizationHomePage {...props} app={this}/>}
                                           </div>              
                                           
                                     )}

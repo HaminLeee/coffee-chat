@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { addOrganization, checkSession, updateOrgForm, getAllOrganization } from '../../actions/organization';
+import { addOrganization, checkSession, updateOrgForm, getAdminAllOrganization } from '../../actions/organization';
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import './index.css'
@@ -27,7 +27,7 @@ class AdminOrganizationCard extends Component {
      }
      
      async componentDidMount() {
-          const organizations = await getAllOrganization(this);
+          const organizations = await getAdminAllOrganization(this);
           await console.log(organizations)
      }
 
@@ -112,6 +112,7 @@ class AdminOrganizationCard extends Component {
                                         {/* {this.state.error.length > 1 && <h5>{this.state.error}</h5>} */}
                                    </label>
                               </form>
+                              <br></br>
                               <Button
                                    variant="contained"
                                    color="default"
@@ -122,8 +123,8 @@ class AdminOrganizationCard extends Component {
                                    Add Organization
                               </Button>
                          </div>
-                         <br></br>
                      
+                    <br></br>
                     </div>
                     <div className="organizationCards">
                          {organizationCards}

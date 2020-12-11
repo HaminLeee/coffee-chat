@@ -8,37 +8,51 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { getAllOrganization } from '../../actions/organization';
 
 class OrganizationCard extends Component {
-     state = {
-          organizations: ['UofT', 'Amazon', 'Intel', 'CSC309'],
-
+     constructor(props) {
+          super(props);
+          this.state = {
+               name: "",
+               description: "",
+               organizations: [],
+          };
+          this.props.history.push('/dashboard')
+     }
+     async componentDidMount() {
+          const organizations = await getAllOrganization(this);
+          await console.log(organizations)
      }
 
+
      render() {
+          console.log(this.state.organizations);
           const organizationCards = this.state.organizations.map((organization) => {
                return (
                     <Card className="organizationCard">
                          <CardActionArea>
-                         <CardMedia
-                              className=""
-                              image="/static/images/cards/contemplative-reptile.jpg"
-                              title="Contemplative Reptile"
-                         />
-                         <CardContent>
-                              <Typography gutterBottom variant="h5" component="h2">
-                              {organization} 
-                              </Typography>
-                              <Typography variant="body2" color="textSecondary" component="p">
-                              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                              across all continents except Antarctica
-                              </Typography>
-                         </CardContent>
+                              <CardMedia
+                                   className=""
+                                   image="/static/images/cards/contemplative-reptile.jpg"
+                                   title="Contemplative Reptile"
+                              />
+                              <CardContent>
+                                   <Typography gutterBottom variant="h5" component="h2">
+                                   {organization.name} 
+                                   </Typography>
+                                   <Typography variant="body2" color="textSecondary" component="p">
+                                   {organization.description}
+                                   </Typography>
+                              </CardContent>
                          </CardActionArea>
                          <CardActions>
-                         <Button size="medium" color="primary" href={ '/organization/' + organization }>
-                              Explore
-                         </Button>
+                              <Button size="medium" color="primary" href={ '/organization/' + organization }>
+                                   Explore
+                              </Button>
+                              <Button size="medium" color="danger" href={ '/organization/' + organization }>
+                                   Follow
+                              </Button>
                          </CardActions>
                     </Card>
                )
