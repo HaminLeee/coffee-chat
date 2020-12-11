@@ -154,7 +154,7 @@ app.post('/api/users', mongoChecker, async (req, res) => {
     }
 })
 
-app.post('/api/followOrganization', mongoChecker, async (req, res) => {
+app.post('/api/joinOrganization', mongoChecker, async (req, res) => {
     log(req.body)
     // Find user by ID
 
@@ -164,7 +164,7 @@ app.post('/api/followOrganization', mongoChecker, async (req, res) => {
 
 /** Student resource routes **/
 // Get user
-app.get('/api/user', mongoChecker, authenticate, async (req, res) => {
+app.get('/api/user/:uid', mongoChecker, authenticate, async (req, res) => {
     // Find user Given Id 
     
     // Get info of the user
@@ -184,20 +184,7 @@ app.get('/api/user', mongoChecker, authenticate, async (req, res) => {
     }
 })
 
-// a GET route to get all students
-app.get('/api/allUsers', mongoChecker, authenticate, async (req, res) => {
 
-    // Get allUsers
-    try {
-        const people = await Person.find({creator: req.user._id})
-        // res.send(students) // just the array
-        res.send({ people }) // can wrap students in object if want to add more properties
-    } catch(error) {
-        log(error)
-        res.status(500).send("Internal Server Error")
-    }
-
-})
 // Get all user given orgId
 app.get('/api/allUsers/:orgId', mongoChecker, authenticate, async (req, res) => {    
 
@@ -244,9 +231,6 @@ app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
 })
 
 /// Route for deleting organization  
-// Returned JSON should have the updated restaurant database  
-//   document from which the reservation was deleted, AND the reservation subdocument deleted:  
-//   { "reservation": <reservation subdocument>, "restaurant": <entire restaurant document>}  
 // DELETE /api/organization/<organization_id>/ 
 
 app.delete('/api/organization/:id', async (req, res) => {  
@@ -278,7 +262,6 @@ app.delete('/api/organization/:id', async (req, res) => {
 })  
   
 
-// a GET route to get all students
 app.get('/api/admin/organizations', mongoChecker, authenticate, async (req, res) => {
     // Get the students
     try {

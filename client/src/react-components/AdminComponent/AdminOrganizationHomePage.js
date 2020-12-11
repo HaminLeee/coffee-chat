@@ -13,7 +13,7 @@ class AdminOrganizationHomePage extends Component {
           return (
                <div className="pageContainer">
                     <div id="homeHeader"> 
-                         <h1>Your Organizations</h1>
+                         <h1>Add Organizations</h1>
                          <AdminOrganizationCard {...this.props} app={app}></AdminOrganizationCard>
                     </div>
                </div>
