@@ -202,10 +202,11 @@ app.get('/api/people', mongoChecker, authenticate, async (req, res) => {
 // a POST route to *create* a student
 app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
     log(`Adding organization ${req.body.name}, created by user ${req.user._id}`)
-
+    
     // Create a new student using the Student mongoose model
     const organization = new Organization({
         name: req.body.name,
+        description: req.body.description,
         people: [],
     })
 

@@ -15,16 +15,24 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 class AdminOrganizationCard extends Component {
      constructor(props) {
           super(props);
-
           this.state = {
+               name: "",
+               description: "",
                organizations: ['UofT', 'CSC369', 'CSSU', 'CSC309', 'Trinity College', 'Arts & Science', 'CSC108', 'CSC-TAs'],
-               newOrganizationName: "",
-               error: ""
           }
+
+          // this.state = {
+          //      newOrganizationName: "",
+          //      error: ""
+          // }
           // this.addOrganization = this.addOrganization.bind(this);
           this.deleteOrganization = this.deleteOrganization.bind(this);
-          this.handleInputChange = this.handleInputChange.bind(this);
+          // this.handleInputChange = this.handleInputChange.bind(this);
      }
+
+
+
+
 
      // addOrganization = () => {
      //      if (this.state.newOrganizationName.length > 0) {
@@ -49,12 +57,7 @@ class AdminOrganizationCard extends Component {
           })
      }
 
-     handleInputChange = e => {
-          this.setState({ 
-               newOrganizationName: e.target.value,
-          })
 
-     }
 
      render() {
           const {app} = this.props;
@@ -109,17 +112,18 @@ class AdminOrganizationCard extends Component {
                                    <br></br>
                                    <TextField 
                                         required
+                                        name="description" 
                                         variant="outlined"
                                         label="Description"
-                                        placeholder="Add a short description"
                                         multiline
+                                        placeholder="Add a short description"
                                         rows={3}
                                         size="large"
                                         minLength={3}
                                         onChange={e => updateOrgForm(this, e.target)} 
                                         type="text" 
-                                        name="description" />
-                                   {this.state.error.length > 1 && <h5>{this.state.error}</h5>}
+                                   />
+                                   {/* {this.state.error.length > 1 && <h5>{this.state.error}</h5>} */}
                               </label>
                          </form>
                          <br></br>

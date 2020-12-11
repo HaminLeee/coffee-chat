@@ -11,12 +11,12 @@ export const checkSession = (app) => {
             }
         })
         .then(json => {
-            if (json && json.currentUser) {
-                app.setState({ currentUser: json.currentUser });
+            if (json && json.currentUser && json.isAdmin) {
+                app.setState({ currentUser: json.currentUser, isAdmin: json.isAdmin });
             }
-            if (json && json.isAdmin) {
-                app.setState({ isAdmin: json.isAdmin });
-            }
+            // if (json && json.isAdmin) {
+            //     app.setState({ isAdmin: json.isAdmin });
+            // }
         })
         .catch(error => {
             console.log(error);
@@ -24,11 +24,11 @@ export const checkSession = (app) => {
 };
 
 // A functon to update the login form state
-export const updateOrgForm = (loginComp, field) => {
+export const updateOrgForm = (addOrgComp, field) => {
     const value = field.value;
     const name = field.name;
 
-    loginComp.setState({
+    addOrgComp.setState({
         [name]: value
     });
 };
@@ -46,7 +46,7 @@ export const addOrganization = (addOrgComp, app) => {
      fetch(request)
         .then(res => {
             if (res.status === 200) {
-                console.log('Successfully Added User')
+                console.log('Successfully added new organization')
                 return res.json();
             }
         })
