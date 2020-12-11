@@ -41,42 +41,52 @@ class App extends React.Component {
                   
             };
             return (
-            <div id="app">
-                  <BrowserRouter>
-                        <NavbarComp currentUser={this.state.currentUser}/>
-                        <Switch>
-                              <Route
-                              exact path={["/login", "/dashboard", "/admin"] /* any of these URLs are accepted. */ }
-                              render={ props => (
-                                    <div>
-                                          { /* Different componenets rendered depending on if someone is logged in. */}
-                                          {!currentUser ? <LoginPage {...props} app={this} /> : !isAdmin ? <ExplorePage {...props} app={this}/> : <AdminOrganizationHomePage {...props} app={this}/>}
-                                    </div>              
-                                    
-                              )}
-                              />
-      
-                              <Route exact path='/'
-                                    render={() => <SplashPage/>} />
-                              <Route exact path='/signup'
-                                    render={props => <Signup {...props}/>} />
-                              <Route exact path='/explore'
-                                    render={() => <UserHomePage app={this}/>} />
-                              <Route exact path='/admin/tmp'
-                                    render={() => <AdminOrganizationHomePage app={this}/>}/>
-                              <Route exact path='/admin/user'
-                                    render={() => <AdminUserHomePage app={this}/>} />     
-                              <Route exact path='/organization/:orgName'
-                                    component={UserHomePage}/>
-                              <Route exact path='/user/explorer'
-                                    render={() => <UserExplorerPage app={this}/>}/>
-      
-                              { /* 404 if URL isn't expected. */}
-                              <Route render={() => <div>404 Not found</div>} />
-      
-                        </Switch>
-                  </BrowserRouter>
-            </div>
+                  <div id="app">
+                        <BrowserRouter>
+                              <NavbarComp currentUser={this.state.currentUser}/>
+                              <Switch>
+                                    <Route
+                                    exact path={["/login", "/dashboard", "/admin"] /* any of these URLs are accepted. */ }
+                                    render={ props => (
+                                          <div>
+                                                { /* Different componenets rendered depending on if someone is logged in. */}
+                                                {!currentUser ? <LoginPage {...props} app={this} /> : !isAdmin ? <ExplorePage {...props} app={this}/> : <AdminOrganizationHomePage {...props} app={this}/>}
+                                          </div>              
+                                          
+                                    )}
+                                    />
+            
+                                    <Route exact path='/'
+                                          render={() => <SplashPage/>} />
+                                    <Route exact path='/signup'
+                                          render={props => <Signup {...props}/>} />
+                                    <Route exact path='/explore'
+                                          render={() => <UserHomePage app={this}/>} />
+                                    <Route exact path='/admin/user'
+                                          render={props => (
+                                                <div>
+                                                      {isAdmin ? <AdminUserHomePage {...props} app={this}/> : !currentUser ? <SplashPage /> : <ExplorePage {...props} app={this}/>}
+                                                </div>
+                                                )
+                                          }
+                                    />
+                                     
+                                    <Route exact path='/organization/:orgName'
+                                          component={UserHomePage}/>
+                                    <Route exact path='/user/explorer'
+                                          render={props => (
+                                                <div>
+                                                      {!currentUser ? <LoginPage {...props} app={this}/> : <UserExplorerPage {...props} app={this}/>}
+                                                </div>
+                                          ) 
+                                    }/>
+            
+                                    { /* 404 if URL isn't expected. */}
+                                    <Route render={() => <div>404 Not found</div>} />
+            
+                              </Switch>
+                        </BrowserRouter>
+                  </div>
         );
       }
 }
