@@ -51,6 +51,7 @@ yarn start
 - Users are able to explore all the organization in the db, and from this dashboard page they can choose which organization they want to join. This can be done by pressing the join button on the card. Once joined the user will be added to the organization and to see all the members in that organization simply press the "View members button", then you will see all the users that join that organization. 
 - Screenshot of all the user page
 - One you get in to this page you can press "View Profile" to see individual profile for each user. There is a "Chat now" button which will trigger a chat with that user.
+- The chat functionality is hardcoded on one-side, where the logged in user will only be chatting with the test user that we created, with the name "TestUser", and email is "test@test.com", created in the UserCard.js
 - Chat screenshot
 
 ## API Calls
