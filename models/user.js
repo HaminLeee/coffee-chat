@@ -42,15 +42,19 @@ const UserSchema = new mongoose.Schema({
 		minlength: 1,
 		trim: true,
 		unique: true,
-		validate: {
-			validator: validator.isEmail,   // custom validator
-			message: 'Not valid email'
-		}
+		// validate: {
+		// 	validator: validator.isEmail,   // custom validator
+		// 	message: 'Not valid email'
+		// }
 	}, 
 	password: {
 		type: String,
 		required: true,
-		minlength: 6
+		minlength: 3
+	},
+	isAdmin: {
+		type: Boolean,
+		default: false,
 	},
 	contacts: [ContactSchema]
 })

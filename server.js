@@ -135,7 +135,6 @@ app.post('/api/users', mongoChecker, async (req, res) => {
         name: req.body.name,
         occupation: req.body.occupation,
         contacts: [],
-
     })
 
     try {
