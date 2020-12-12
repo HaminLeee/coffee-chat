@@ -67,7 +67,7 @@ class AdminOrganizationCard extends Component {
                          </CardActionArea>
                          <CardActions>
                          {/* should be /admin/organization/:id soon */}
-                         <Button size="medium" color="primary" href={'/organization/' + organization._id}>
+                         <Button size="medium" color="primary" href={'/admin/' + organization._id}>
                               View Members
                          </Button>
                          <Button className="delOrgButton" onClick={() => deleteOrganization(this, organization._id)} size="medium" color="secondary">

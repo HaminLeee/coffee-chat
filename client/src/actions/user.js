@@ -132,3 +132,27 @@ export const getUser = (app, id) => {
             console.log(error);
         })
 }
+
+export const kickUserFromOrganization = (app, id, orgId) => {
+    let url = "/api/kickUser/" + id + '/' + orgId;
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(app.state),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    fetch(request)
+        .then(res => {
+            return res.json()
+        })
+        .then(json => {
+            console.log(json)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+ 
+}

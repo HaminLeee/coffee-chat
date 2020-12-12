@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { updateOrgForm } from '../../actions/organization';
-import { getAllUsers } from '../../actions/user';
+import { getAllUsers, kickUserFromOrganization, addUserToOrg } from '../../actions/user';
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Chat from '../Chat/Chat';
@@ -26,27 +26,7 @@ class AdminUserCards extends Component {
      }
 
 
-     addUser = () => {
-          this.state.userNames.push(this.state.newUserName);
-          let list = this.state.userNames;
-          this.setState({
-               userNames: list,
-          })   
-     }
 
-     deleteUser = (user) => {
-          let updated = this.state.userNames.filter((u) => u !== user);
-          this.setState({
-               userNames: updated,
-          })
-     }
-
-     handleInputChange = e => {
-          this.setState({ 
-               newUserName: e.target.value,
-          })
-
-     }
 
      render() {
           const userCards = this.state.people.map((user) => {
@@ -70,11 +50,14 @@ class AdminUserCards extends Component {
                          <CardActions>
                          {/* should be /admin/organization/:id soon */}
                          <Button size="medium" color="primary" href={"/user/" + user._id}>
-                              View Members
+                              More Information 
                          </Button>
-                         {/* <Button className="delOrgButton" onClick={() => this.kickUser(organization)} size="medium" color="secondary">
+                         <Button className="delOrgButton" 
+                                   onClick={() => kickUserFromOrganization(this, user._id, window.location.pathname.split('/')[2])} 
+                                   size="medium" 
+                                   color="secondary">
                               Delete
-                         </Button> */}
+                         </Button>
                          </CardActions>
                     </Card>
                )
@@ -97,17 +80,20 @@ class AdminUserCards extends Component {
                                         type="text" 
                                         name="email" />
                               </label>
+                              <br></br>
+                              <br></br>
+                              <Button
+                                   variant="contained"
+                                   color="default"
+                                   startIcon={<CloudUploadIcon />}
+                                   color="primary"
+                                   // onClick={() => joinOrganization(this, app)}
+                              >
+                                   Add User (Not fully implemented)
+                              </Button>
                          </form>
                          <br></br>
-                         <Button
-                              variant="contained"
-                              color="default"
-                              startIcon={<CloudUploadIcon />}
-                              color="primary"
-                              // onClick={() => addUserToOrg(this, app)}
-                         >
-                              Add User
-                         </Button>
+                         
                     </div>
                     <div className="organizationCards">
                          {userCards}
