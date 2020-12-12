@@ -46,8 +46,14 @@ yarn start
 - User Credtials
      - username: **user** password **user**
      - Or you can create a new user in the Sign up page
-- Sign up page screen shot
+- Sign up page:
+
+![image](https://user-images.githubusercontent.com/53430478/101965863-74a19800-3bec-11eb-9049-b198c2a9b350.png)
+
 - Dashboard screen shot here
+
+![image](https://user-images.githubusercontent.com/53430478/101965982-dbbf4c80-3bec-11eb-83b3-0f099e283b2d.png)
+
 - Users are able to explore all the organization in the db, and from this dashboard page they can choose which organization they want to join. This can be done by pressing the join button on the card. Once joined the user will be added to the organization and to see all the members in that organization simply press the "View members button", then you will see all the users that join that organization. 
 - Screenshot of all the user page
 - One you get in to this page you can press "View Profile" to see individual profile for each user. There is a "Chat now" button which will trigger a chat with that user.
