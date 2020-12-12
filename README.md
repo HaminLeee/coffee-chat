@@ -23,7 +23,7 @@ yarn run build-run
 
 ## How to use the application
 - Splash page
-![Alt Text](screenshot/splashpage.png)
+![Alt Text](screenshots/splashpage.png)
 
 ### Admin
 - Admin Credtials 
