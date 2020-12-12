@@ -22,6 +22,7 @@ class Chat extends Component {
         this.onUpdate = this.onUpdate.bind(this);
         this.onClickContact = this.onClickContact.bind(this);
     }
+    //function to choose clicked contact
     onClickContact(uid, e) {
         e.preventDefault();
         this.state.contacts.forEach((contact)=>{
@@ -31,9 +32,9 @@ class Chat extends Component {
             }
         })
     }
+    //function to open and close chatbox
     toggleClass() {
         if(!this.state.active){
-            console.log("enters function");
             getContactsOfUser(this);
         }
         else {
@@ -43,10 +44,12 @@ class Chat extends Component {
         }
         this.setState( {active: !this.state.active});
     };
+    //function to send form inputs to user
     onSend(e) {
         e.preventDefault();
         sendMessageToUser(this);
     }
+    //function to update input form
     onUpdate(e) {
         this.setState({inputValue: e.target.value});
     }
