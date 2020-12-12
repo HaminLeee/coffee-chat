@@ -7,19 +7,23 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { getAllUsers , updateOrgForm } from '../../actions/organization';
+import { updateOrgForm } from '../../actions/organization';
+import { getAllUsers } from '../../actions/user';
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Chat from '../Chat/Chat';
 
 class AdminUserCards extends Component {
      state = {
-          userNames: ['Hamin', 'Thuy', 'Umid', 'Mark', 'Matt', 'Gary', 'Robert' ],
           newUserName: '',
-          people: []
-
+          people: [],
+          
      }
      
+     async componentDidMount() {
+          let orgId = window.location.pathname.split("/")[2];
+          await getAllUsers(this, orgId);
+     }
 
 
      addUser = () => {
@@ -45,7 +49,7 @@ class AdminUserCards extends Component {
      }
 
      render() {
-          const userCards = this.state.userNames.map((user) => {
+          const userCards = this.state.people.map((user) => {
                return (
                     <Card className="organizationCard">
                          <CardActionArea>

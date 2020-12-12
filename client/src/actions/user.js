@@ -113,3 +113,22 @@ export const getAllUsers = (app, id) => {
             console.log(error)
         })
 }
+
+export const getUser = (app, id) => {
+    let url = '/api/user/' + id;
+
+    fetch(url)
+        .then(res => {
+            return res.json()
+        })
+        .then(json => {
+            console.log(json)
+            app.setState({
+                user: json.user.name,
+                occupation: json.user.occupation
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}

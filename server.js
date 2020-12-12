@@ -160,14 +160,12 @@ app.post('/api/users', mongoChecker, async (req, res) => {
 // Get user
 app.get('/api/user/:uid', mongoChecker, authenticate, async (req, res) => {
     // Find user Given Id 
+    let id = req.params.uid;
     
-    // Get info of the user
-
-    // Save student to the database
-    // async-await version:
     try {
-        const result = await person.save() 
-        res.send(result)
+        const user = await User.findById(id)
+
+        res.send({user})
     } catch(error) {
         log(error) // log server error to the console, not to the client.
         if (isMongoError(error)) { // check for if mongo server suddenly dissconnected before this request.
@@ -218,6 +216,30 @@ app.post('/api/joinOrganization/:orgId', mongoChecker, authenticate, async (req,
             organization.people.push(newMember)
             organization.save()
         }
+        res.send(organization.people);  
+    } catch (error) {  
+        log(error);  
+        if (isMongoError(error)) {  
+            res.status(500).send('Internal server error');  
+        } else {  
+            res.status(400).send('Bad Request');  
+        }  
+    }  
+})
+
+app.post('/api/unfollowOrganization/:orgId', mongoChecker, authenticate, async (req, res) => {
+    const id = req.params.orgId;
+    try {  
+        const organization = await Organization.findById(id);  
+        if (!organization) {  
+            res.status(404).send('Resource not found');  
+            return;  
+        }   
+
+        const newMember = await User.findById(req.user._id);
+        organization.people.filter(p => p != newMember)
+        organization.save()
+        
         res.send(organization.people);  
     } catch (error) {  
         log(error);  
