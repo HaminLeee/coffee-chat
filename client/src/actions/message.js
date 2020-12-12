@@ -1,5 +1,12 @@
+
+/**Getting messages from chosen user
+ *
+ * Parameter:
+ *      chatComp: Chat component
+ * */
 export const getMessagesFromUser = (chatComp) => {
     console.log(chatComp.state.chosenContact)
+    // Since get request wont have body, we make "post" request
     const request = new Request("/api/getmessages", {
         method: "post",
         body: JSON.stringify({
@@ -12,11 +19,13 @@ export const getMessagesFromUser = (chatComp) => {
     });
     fetch(request)
         .then(res => {
+            //Converting values to json
             if (res.status === 200) {
                 return res.json();
             }
         })
         .then(json => {
+            //If json returned, load messages to screen
             if(json) {
                 chatComp.setState(
                     {
@@ -31,6 +40,12 @@ export const getMessagesFromUser = (chatComp) => {
         });
 }
 
+/**
+ * Send Message to chose contact
+ *
+ * Parameter:
+ *      chatComp: Chat Component
+ * */
 export const sendMessageToUser = (chatComp) => {
     const request = new Request("/api/messages", {
         method: "post",
@@ -62,7 +77,12 @@ export const sendMessageToUser = (chatComp) => {
             console.log(error);
         });
 }
-
+/**
+ * Get contacts of current user
+ *
+ * Parameter:
+ *      chatComp: Chat component
+ * */
 export const getContactsOfUser = (chatComp) => {
     const request = new Request("/api/contacts", {
         method: "get",
@@ -88,7 +108,13 @@ export const getContactsOfUser = (chatComp) => {
             console.log(error)
         })
 }
-
+/**
+ * Adding contact to on both of the User's contact list
+ *
+ * Parameter:
+ *      orgComp: Organization component
+ *      values: dictionary storing email and name of clicked contact
+ * */
 export const addContactUser = (orgComp, values) => {
     const request = new Request("/api/contacts", {
         method: "post",
