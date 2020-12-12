@@ -29,7 +29,13 @@ export const updateLoginForm = (loginComp, field) => {
         [name]: value
     });
 };
-
+/**
+ * Create credentials for user with given email, password, name ...
+ *
+ * Parameter:
+ *      app: App.js component
+ *      signUpComp: Sign Up component
+ * */
 export const signup = (signUpComp, app) => {
     const request = new Request("/api/users", {
         method: "post",
@@ -96,7 +102,13 @@ export const logout = (app) => {
             console.log(error);
         });
 };
-
+/**
+ * Getting all users with given organization id
+ *
+ * Parameter:
+ *      app: App.js component
+ *      id: id of organization
+ * */
 export const getAllUsers = (app, id) => {
     let url = '/api/allUsers/' + id;
     fetch(url)
@@ -113,7 +125,13 @@ export const getAllUsers = (app, id) => {
             console.log(error)
         })
 }
-
+/**
+ * Getting user with given id
+ *
+ * Parameter:
+ *      app: App.js component
+ *      id: id of given user
+ * */
 export const getUser = (app, id) => {
     let url = '/api/user/' + id;
 
@@ -132,7 +150,14 @@ export const getUser = (app, id) => {
             console.log(error);
         })
 }
-
+/**
+ * Kicking user from Organization
+ *
+ * Parameter:
+ *      app: App.js component
+ *      id: id of user
+ *      orgId: id of organization
+ * */
 export const kickUserFromOrganization = (app, id, orgId) => {
     let url = "/api/kickUser/" + id + '/' + orgId;
     const request = new Request(url, {
