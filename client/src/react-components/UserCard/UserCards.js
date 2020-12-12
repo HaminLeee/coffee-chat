@@ -33,8 +33,8 @@ class UserCards extends Component {
           })
      }
 
-     startConv = () => {
-         addContactUser(this, {name:"TestUser", email:"test@test.com"});
+     startConv = (name, email) => {
+         addContactUser(this, {name:name, email:email});
      }
 
      render() {
@@ -60,7 +60,7 @@ class UserCards extends Component {
                          <Button size="medium" color="primary" href={ '/user/' + user._id }>
                               About Me
                          </Button>
-                         <Button size="medium" color="secondary" onClick={this.startConv}>
+                         <Button size="medium" color="secondary" onClick={() => this.startConv(user.name, user.email)}>
                               Start a chat!
                          </Button>
                          </CardActions>
