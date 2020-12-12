@@ -250,6 +250,31 @@ app.post('/api/unfollowOrganization/:orgId', mongoChecker, authenticate, async (
     }  
 })
 
++app.post('/api/kickUser/:userId/:orgId', mongoChecker, authenticate, async (req, res) => {
+    const id = req.params.userId;
+    const orgId = req.params.orgId;
+    try {
+        const user = await User.findById(id);
+        if (!user) {
+            res.status(404).send('Resource not found');
+            return;
+        }
+
+        const organization = await Organization.findById(orgId);
+        organization.people.filter(p => p != user)
+        organization.save()
+
+        res.send(organization.people);
+    } catch (error) {
+        log(error);
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error');
+        } else {
+            res.status(400).send('Bad Request');
+        }
+    }
+})
+
 // a POST route to *create* an organization
 app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
     log(`Adding organization ${req.body.name}, created by user ${req.user._id}`)
