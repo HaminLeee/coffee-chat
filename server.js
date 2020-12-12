@@ -13,7 +13,6 @@ mongoose.set('useFindAndModify', false); // for some deprecation issues
 
 // import the mongoose models
 const { User } = require("./models/user");
-const { Person } = require("./models/person");
 const { Organization } = require("./models/organization");
 const { Message } = require("./models/message");
 
@@ -156,7 +155,6 @@ app.post('/api/users', mongoChecker, async (req, res) => {
 
 
 
-/** Student resource routes **/
 // Get user
 app.get('/api/user/:uid', mongoChecker, authenticate, async (req, res) => {
     // Find user Given Id 
@@ -188,14 +186,14 @@ app.get('/api/allUsers/:orgId', mongoChecker, authenticate, async (req, res) => 
         }
         // Get the people array, default is []
         const people = organization.people;
-        // res.send(students) // just the array
-        res.send({ people }) // can wrap students in object if want to add more properties
+        res.send({ people })
     } catch(error) {
         log(error)
         res.status(500).send("Internal Server Error")
     }
 })
 
+// a POST route to let the logged in user joined an organization with id orgId
 app.post('/api/joinOrganization/:orgId', mongoChecker, authenticate, async (req, res) => {
     const id = req.params.orgId;
     try {  
@@ -227,6 +225,7 @@ app.post('/api/joinOrganization/:orgId', mongoChecker, authenticate, async (req,
     }  
 })
 
+// a POST route to let the current user unfollow an organization with id orgId
 app.post('/api/unfollowOrganization/:orgId', mongoChecker, authenticate, async (req, res) => {
     const id = req.params.orgId;
     try {  
@@ -251,13 +250,11 @@ app.post('/api/unfollowOrganization/:orgId', mongoChecker, authenticate, async (
     }  
 })
 
-// other student API routes can go here...
-// ...
-// a POST route to *create* a student
+// a POST route to *create* an organization
 app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
     log(`Adding organization ${req.body.name}, created by user ${req.user._id}`)
     
-    // Create a new student using the Student mongoose model
+    // Create a new organization using the organization mongoose model
     const organization = new Organization({
         name: req.body.name,
         description: req.body.description,
@@ -266,7 +263,7 @@ app.post('/api/organization', mongoChecker, authenticate, async (req, res) => {
     })
 
 
-    // Save student to the database
+    // Save organization to the database
     // async-await version:
     try {
         const result = await organization.save() 
@@ -290,9 +287,7 @@ app.delete('/api/organization/:id', async (req, res) => {
         res.status(404).send();  
         return;  
     }  
-  
 
-    // Add code here  
     try {  
         const organization = await Organization.findById(id);  
         if (!organization) {  
@@ -311,21 +306,20 @@ app.delete('/api/organization/:id', async (req, res) => {
     }  
   
 })  
-  
 
+// a GET route to get all the organizations for admin
 app.get('/api/admin/organizations', mongoChecker, authenticate, async (req, res) => {
-    // Get the students
+    // Get the organization
     try {
         const organizations = await Organization.find({creator: req.user._id})
-        // res.send(students) // just the array
-        res.send({ organizations }) // can wrap students in object if want to add more properties
+        res.send({ organizations })
     } catch(error) {
         log(error)
         res.status(500).send("Internal Server Error")
     }
 })
 
-// a GET route to get all students
+// a GET route to get all organizations for the logged in user
 app.get('/api/allOrganizations', mongoChecker, authenticate, async (req, res) => {
     // Get the students
     try {
