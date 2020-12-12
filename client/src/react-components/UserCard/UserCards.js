@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-import Chat from '../Chat/Chat';
-import { Link } from 'react-router-dom';
-// import '../organization.css';
-import { uid } from 'react-uid';
+import { Component } from 'react';
+import Chat from '../Chat/Chat';;
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
