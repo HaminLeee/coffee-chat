@@ -60,17 +60,16 @@ class AdminUserCards extends Component {
                          />
                          <CardContent>
                               <Typography gutterBottom variant="h5" component="h2">
-                              {user}
+                              {user.name}
                               </Typography>
                               <Typography variant="body2" color="textSecondary" component="p">
-                              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                              across all continents except Antarctica
+                              {user.occupation}
                               </Typography>
                          </CardContent>
                          </CardActionArea>
                          <CardActions>
                          {/* should be /admin/organization/:id soon */}
-                         <Button size="medium" color="primary" href="/admin/user">
+                         <Button size="medium" color="primary" href={"/user/" + user._id}>
                               View Members
                          </Button>
                          {/* <Button className="delOrgButton" onClick={() => this.kickUser(organization)} size="medium" color="secondary">

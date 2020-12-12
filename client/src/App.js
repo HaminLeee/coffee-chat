@@ -11,6 +11,7 @@ import AdminUserHomePage from './react-components/AdminComponent/AdminUserHomePa
 import UserProfilePage from './react-components/UserExplore/UserProfilePage';
 import SplashPage from './react-components/LandingPage';
 import Signup from './react-components/Signup';
+import AdminUserCards from './react-components/AdminComponent/AdminUserCards';
 
 class App extends React.Component {
       constructor(props) {
@@ -55,9 +56,9 @@ class App extends React.Component {
                                           render={() => <SplashPage/>} />
                                     <Route exact path='/signup'
                                           render={props => <Signup {...props}/>} />
-                                    <Route exact path='/explore'
-                                          render={() => <OrganizationUsers app={this}/>} />
-                                    <Route exact path='/admin/user'
+                                   
+                     
+                                    <Route exact path='/admin/:orgId'
                                           render={props => (
                                                 <div>
                                                        <AdminUserHomePage {...props} app={this}/> 
