@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import UserCards from './UserCards';
 
 class OrganizationUsers extends Component {

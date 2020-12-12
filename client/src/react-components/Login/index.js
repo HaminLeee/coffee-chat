@@ -17,15 +17,6 @@ class LoginPage extends React.Component {
     render() {
         const { app } = this.props
 
-        /*
-            This is where we pack the info needed fo login
-            login(this, app) will call /users/login POST api call with body of
-            {
-                email: email,
-                password: password,
-            }
-        */
-
         return (
             <div className="login__bg-image center">
                 <div className="login__card center"
