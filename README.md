@@ -4,23 +4,14 @@ https://murmuring-plains-25485.herokuapp.com/
 
 
 # How to run
-## Using NPM
-
-```
-cd /client
-
-npm install
-
-npm start
-```
 
 ## Using Yarn
 ```
-cd /client
+yarn run setup
 
-yarn install
+yarn run build-run
 
-yarn start
+- The above command will build your React app and create a static directory that express can understand
 ```
 
 ## Technology used
@@ -31,15 +22,16 @@ yarn start
 - Heroku
 
 ## How to use the application
+- Splash page
+![image](./screenshot/splashpage.png)
+
 ### Admin
 - Admin Credtials 
      - username: **admin** password **admin** 
-- Admin Login Screenshot
 - Admin user has more priviledged operation than regular user. As an admin you are able to add organization,
  delete organization, modify organization, and delete users from an organization. The admin user has access
  to all the organization it has created, we check this using a creator field.
-- Admin Dashboard screenshot
-- Admin User page screenshot
+![image](./screenshot/adminOrgPage.png)
 - There is a sidebar that is created when logged in, this sidebar has a log out button in case you want to log in as regular user
 
 ### Regular User
@@ -50,16 +42,22 @@ yarn start
 
 ![image](https://user-images.githubusercontent.com/53430478/101965863-74a19800-3bec-11eb-9049-b198c2a9b350.png)
 
-- Dashboard screen shot here
+- Login page:
 
 ![image](https://user-images.githubusercontent.com/53430478/101965982-dbbf4c80-3bec-11eb-83b3-0f099e283b2d.png)
 
+- User Dashboard:
+
+![image](./screenshot/userHomepage.png)
+
+
 - Users are able to explore all the organization in the db, and from this dashboard page they can choose which organization they want to join. This can be done by pressing the join button on the card. Once joined the user will be added to the organization and to see all the members in that organization simply press the "View members button", then you will see all the users that join that organization. 
-- Screenshot of all the user page
 - One you get in to this page you can press "View Profile" to see individual profile for each user. There is a "Chat now" button which will trigger a chat with that user.
+
 - For the chatting component to work, only admin or users inside an organization would be able to message with the member inside that organization. Also, in the chatting component, the admin or the user inside an organization only able to view the messages with the member in that organization, by clicking twice into that user's name in the chatting component. For a user to be inside an organization, that user must follow the organization.
 - Chat screenshot
 ![image](https://user-images.githubusercontent.com/53430478/101969082-d36d0e80-3bf8-11eb-9286-056842ff572e.png)
+>>>>>>> 9266bf25b764e1efff78833ef71465ca5eb0d2a5
 
 
 ## API Calls
@@ -81,6 +79,12 @@ yarn start
 - GET /users/logout
      - Destroys the requests session and sends nothing
 
+- GET /users/check-session
+     - Sets the currentUser session for the user that is loggedin
+     - returns = {
+          currentUser: email
+     }
+
 - POST /api/users
      - Adds user when user signs up
      - body = {
@@ -92,6 +96,15 @@ yarn start
       - returns the user that has been created, contacts is initialized as empty list
           - {email:"", .... , contacts:[]}
 
+- GET /api/user/:uid 
+     - Get the user information given the user id uid
+     - return = {
+          user: {
+               ...userfields
+          }
+     }
+
+
 - GET /api/joinOrganization/:orgId
      - Join an organization as a regular user
      - Find the organization id by req.params.orgId and the user by req.user._id
@@ -99,11 +112,10 @@ yarn start
           people: [{user 1}, .... {user n}]
      }
 
-- GET /api/user/:uid
-     - Get info about the user given the user id
 
-- GET /api/AllUsers/:orgId
+- GET /api/allUsers/:orgId
      - Get all users for orginzation with id of orgId 
+
 
 - POST /api/organization
      - Given all the required fields from the body, post a new organization
