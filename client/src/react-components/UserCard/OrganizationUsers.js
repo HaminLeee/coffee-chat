@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Sidebar from '../Sidebar';
 import UserCards from './UserCards';
 
 class OrganizationUsers extends Component {

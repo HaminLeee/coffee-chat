@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { uid } from 'react-uid';
-import { createBrowserHistory } from 'history';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -23,6 +18,7 @@ class Navbar extends Component {
       
       render() {
         const { app } = this.props;
+
         return (
               <>
               <CssBaseline />
@@ -36,7 +32,7 @@ class Navbar extends Component {
               <List>
                 {['Coffee Chat', 'Home', 'Organizations'].map((text, index) => (
                   // <Link to="/dashboard">
-                    <ListItem button key={text} component={Link} to={'/dashboard'}>
+                    <ListItem button key={text} component={Link} to={!app.state.isAdmin ? '/dashboard' : '/admin'}>
                       <ListItemIcon>
                             {index % 2 === 0 ? <LocalCafeIcon color="secondary"/> : <HomeIcon color="primary"/>}
                       </ListItemIcon>

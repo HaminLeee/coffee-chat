@@ -11,7 +11,6 @@ import AdminUserHomePage from './react-components/AdminComponent/AdminUserHomePa
 import UserProfilePage from './react-components/UserExplore/UserProfilePage';
 import SplashPage from './react-components/LandingPage';
 import Signup from './react-components/Signup';
-import AdminUserCards from './react-components/AdminComponent/AdminUserCards';
 
 class App extends React.Component {
       constructor(props) {

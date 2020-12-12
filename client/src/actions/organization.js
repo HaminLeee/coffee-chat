@@ -129,7 +129,7 @@ export const deleteOrganization = (addOrgComp, id) => {
         .then(json => {
             console.log(json)
             if(json) {
-                let updated = addOrgComp.state.organizations.filter((org) => org._id != id);
+                let updated = addOrgComp.state.organizations.filter((org) => org._id !== id);
                 
                 addOrgComp.setState({organizations: updated,  currentUser: json.currentUser, isAdmin: json.isAdmin })
             }

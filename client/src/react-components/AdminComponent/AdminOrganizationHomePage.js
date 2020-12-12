@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Sidebar from '../Sidebar';
 import AdminOrganizationCard from './AdminOrganizationCard';
 
 class AdminOrganizationHomePage extends Component {

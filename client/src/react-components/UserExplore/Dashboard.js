@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Sidebar from '../Sidebar';
 import OrganizationCard from '../UserCard/OrganizationCard';
 
 class Dashboard extends Component {

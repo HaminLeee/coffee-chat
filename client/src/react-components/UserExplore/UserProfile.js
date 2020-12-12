@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { getAllUsers , getUser } from '../../actions/user';
+import { getUser } from '../../actions/user';
 
 
 class UserProfile extends Component {
