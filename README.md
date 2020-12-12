@@ -113,7 +113,7 @@ yarn run build-run
 
 
 - GET /api/allUsers/:orgId
-     - Get all users for orginzation with id of orgId 
+     - Get all users for organization with id of orgId 
      - Returns = {
           people: [{user 1}, .... {user n}]
      }
