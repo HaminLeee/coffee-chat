@@ -121,6 +121,7 @@ code {
 /* Containers */
 .pageContainer {
   display: flex;
+  
 }
 
 #homeHeader {
