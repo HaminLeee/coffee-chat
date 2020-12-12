@@ -1,5 +1,6 @@
 
-/**Getting messages from chosen user
+/**
+ * Getting messages from chosen user
  *
  * Parameter:
  *      chatComp: Chat component

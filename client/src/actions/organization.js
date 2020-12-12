@@ -1,6 +1,12 @@
 // Functions to help with user actions.
 
 // Send a request to check if a user is logged in through the session cookie
+/**
+ * Checking session of current user
+ *
+ * Parameter:
+ *      app: App.js component
+ * */
 export const checkSession = (app) => {
     const url = "/users/check-session";
 
@@ -32,7 +38,13 @@ export const updateOrgForm = (addOrgComp, field) => {
         [name]: value
     });
 };
-
+/**
+ * Adding organization to Database
+ *
+ * Parameter:
+ *      addOrgComp: AddOrganization component
+ *      app: App.js component
+ * */
 export const addOrganization = (addOrgComp, app) => {
     const request = new Request("/api/organization", {
         method: "post",
@@ -65,7 +77,12 @@ export const addOrganization = (addOrgComp, app) => {
             console.log(error);
         });
 }
-
+/**
+ * Getting all organizations created by admin
+ *
+ * Parameter:
+ *      orgComp: Organization component
+ * */
 export const getAdminAllOrganization = (orgComp) => {
     const url = "/api/admin/organizations";
   
@@ -86,7 +103,12 @@ export const getAdminAllOrganization = (orgComp) => {
             console.log(error)
         })
 }
-
+/**
+ * Getting all organizations
+ *
+ * Parameter:
+ *      orgComp: Organization component
+ * */
 export const getAllOrganization = (orgComp) => {
     const url = "/api/allOrganizations";
   
@@ -107,7 +129,13 @@ export const getAllOrganization = (orgComp) => {
             console.log(error)
         })
 }
-
+/**
+ * Deleting organization with given id
+ *
+ * Parameter:
+ *      orgComp: Organization component
+ *      id: id of deleted organization
+ * */
 export const deleteOrganization = (addOrgComp, id) => {
     let url = "/api/organization/" + id
     const request = new Request(url, {
@@ -139,7 +167,13 @@ export const deleteOrganization = (addOrgComp, id) => {
         });
 }
 
-
+/**
+ * Adding user with given id to organization
+ *
+ * Parameter:
+ *      orgComp: Organization component
+ *      id: id of joining user
+ * */
 export const joinOrganization = (orgComp, id) => {
     let url = '/api/joinOrganization/' + id;
     const request = new Request(url, {
