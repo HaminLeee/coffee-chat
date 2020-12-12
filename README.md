@@ -23,7 +23,7 @@ yarn run build-run
 
 ## How to use the application
 - Splash page
-![image](./screenshot/splashpage.png)
+![Alt Text](screenshots/splashpage.png)
 
 ### Admin
 - Admin Credtials 
@@ -31,7 +31,7 @@ yarn run build-run
 - Admin user has more priviledged operation than regular user. As an admin you are able to add organization,
  delete organization, modify organization, and delete users from an organization. The admin user has access
  to all the organization it has created, we check this using a creator field.
-![image](./screenshot/adminOrgPage.png)
+![Alt Text](screenshots/adminOrgPage.png)
 - There is a sidebar that is created when logged in, this sidebar has a log out button in case you want to log in as regular user
 
 ### Regular User
@@ -48,7 +48,7 @@ yarn run build-run
 
 - User Dashboard:
 
-![image](./screenshot/userHomepage.png)
+![Alt Text](screenshots/userHomepage.png)
 
 
 - Users are able to explore all the organization in the db, and from this dashboard page they can choose which organization they want to join. This can be done by pressing the join button on the card. Once joined the user will be added to the organization and to see all the members in that organization simply press the "View members button", then you will see all the users that join that organization. 
@@ -57,7 +57,6 @@ yarn run build-run
 - For the chatting component to work, only admin or users inside an organization would be able to message with the member inside that organization. Also, in the chatting component, the admin or the user inside an organization only able to view the messages with the member in that organization, by clicking twice into that user's name in the chatting component. For a user to be inside an organization, that user must follow the organization.
 - Chat screenshot
 ![image](https://user-images.githubusercontent.com/53430478/101969082-d36d0e80-3bf8-11eb-9286-056842ff572e.png)
->>>>>>> 9266bf25b764e1efff78833ef71465ca5eb0d2a5
 
 
 ## API Calls
@@ -115,7 +114,24 @@ yarn run build-run
 
 - GET /api/allUsers/:orgId
      - Get all users for orginzation with id of orgId 
+     - Returns = {
+          people: [{user 1}, .... {user n}]
+     }
 
+- POST /api/unfollowOrganization/:orgId
+     - Unfollow an organization as regular user given the orgId and currentUser id
+     - Returns the list of people excluding the current user
+     - This funciton is not fully implemented in the front end 
+     - Returns = {
+         people: [{user 1}, .... {user n}] 
+     }
+
+- POST /api/kickUser/:userId/:orgId
+     - Kick the user from an organization as an Admin user
+     - This funciton is not fully implemented in the front end 
+     - Returns = {
+         people: [{user 1}, .... {user n}] 
+     }
 
 - POST /api/organization
      - Given all the required fields from the body, post a new organization
