@@ -1,9 +1,5 @@
 # Coffee Chat Web Application POC
 
-# Deployed website URL
-https://murmuring-plains-25485.herokuapp.com/
-
-
 # How to run
 
 ## Using Yarn

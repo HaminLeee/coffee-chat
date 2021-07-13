@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const MemberSchema = new mongoose.Schema({  
     name: String,  
     occupation: String,
-	email: String
+    email: String
 });  
   
 
