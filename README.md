@@ -1,4 +1,5 @@
-# Coffee Chat Web Application
+# Coffee Chat Web Application POC
+
 # Deployed website URL
 https://murmuring-plains-25485.herokuapp.com/
 
@@ -22,8 +23,6 @@ yarn run build-run
 - Heroku
 
 ## How to use the application
-- Splash page
-![Alt Text](screenshots/splashpage.png)
 
 ### Admin
 - Admin Credtials 
@@ -31,32 +30,12 @@ yarn run build-run
 - Admin user has more priviledged operation than regular user. As an admin you are able to add organization,
  delete organization, modify organization, and delete users from an organization. The admin user has access
  to all the organization it has created, we check this using a creator field.
-![Alt Text](screenshots/adminOrgPage.png)
 - There is a sidebar that is created when logged in, this sidebar has a log out button in case you want to log in as regular user
 
 ### Regular User
 - User Credtials
      - username: **user** password **user**
      - Or you can create a new user in the Sign up page
-- Sign up page:
-
-![image](https://user-images.githubusercontent.com/53430478/101965863-74a19800-3bec-11eb-9049-b198c2a9b350.png)
-
-- Login page:
-
-![image](https://user-images.githubusercontent.com/53430478/101965982-dbbf4c80-3bec-11eb-83b3-0f099e283b2d.png)
-
-- User Dashboard:
-
-![Alt Text](screenshots/userHomepage.png)
-
-
-- Users are able to explore all the organization in the db, and from this dashboard page they can choose which organization they want to join. This can be done by pressing the join button on the card. Once joined the user will be added to the organization and to see all the members in that organization simply press the "View members button", then you will see all the users that join that organization. 
-- One you get in to this page you can press "View Profile" to see individual profile for each user. There is a "Chat now" button which will trigger a chat with that user.
-
-- For the chatting component to work, only admin or users inside an organization would be able to message with the member inside that organization. Also, in the chatting component, the admin or the user inside an organization only able to view the messages with the member in that organization, by clicking twice into that user's name in the chatting component. For a user to be inside an organization, that user must follow the organization.
-- Chat screenshot
-![image](https://user-images.githubusercontent.com/53430478/101969082-d36d0e80-3bf8-11eb-9286-056842ff572e.png)
 
 
 ## API Calls
